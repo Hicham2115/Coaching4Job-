@@ -96,8 +96,8 @@ export default function LandingSections() {
 
       <section id="methode" className="scroll-reveal scroll-mt-10 bg-white">
         <div className="mx-auto max-w-[1360px] px-6 sm:px-10 lg:px-16">
-          <div className="grid gap-8 py-12 sm:py-16 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-6 lg:py-14">
-            <div className="lg:pr-2">
+          <div className="grid gap-0 py-12 sm:py-16 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-6 lg:py-14">
+            <div className="relative z-10 order-2 -mt-10 mx-3 border border-brand-ink/10 bg-white/95 p-6 shadow-[0_14px_36px_rgba(17,17,17,0.08)] backdrop-blur-sm sm:mx-0 sm:p-8 lg:order-1 lg:mt-0 lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none lg:pr-2">
               <p className="mb-7 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-muted sm:text-sm">
                 <span
                   aria-hidden="true"
@@ -105,7 +105,7 @@ export default function LandingSections() {
                 />
                 Notre méthode
               </p>
-              <h2 className="max-w-[700px] text-[clamp(2.15rem,3.1vw,3.35rem)] font-bold leading-[1.1] tracking-[-0.045em] text-brand-ink">
+              <h2 className="max-w-[700px] text-[clamp(1.9rem,3.1vw,3.35rem)] font-bold leading-[1.1] tracking-[-0.045em] text-brand-ink">
                 Un accompagnement{" "}
                 <span className="lg:block">
                   humain, concret et sur mesure
@@ -119,13 +119,13 @@ export default function LandingSections() {
               </p>
               <Link
                 href="#methode-detail"
-                className="mt-8 inline-flex min-h-[62px] items-center justify-between gap-8 rounded-full bg-brand-yellow px-8 text-base font-semibold text-brand-ink transition-transform hover:-translate-y-0.5 sm:text-lg"
+                className="mt-8 inline-flex min-h-[62px] w-full items-center justify-center gap-3 whitespace-nowrap rounded-full bg-brand-yellow px-4 text-sm font-semibold text-brand-ink transition-transform hover:-translate-y-0.5 sm:w-auto sm:justify-between sm:gap-8 sm:px-8 sm:text-lg"
               >
                 Découvrir notre méthode
                 <ArrowRight aria-hidden="true" className="size-4" />
               </Link>
             </div>
-            <div className="relative aspect-[1.56] w-full overflow-hidden bg-brand-soft">
+            <div className="relative order-1 aspect-[1.3] w-full overflow-hidden bg-brand-soft sm:aspect-[1.56] lg:order-2">
               <Image
                 alt="Vue de la mosquée Hassan II et de la promenade de Casablanca"
                 className="object-cover"
