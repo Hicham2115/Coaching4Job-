@@ -43,7 +43,7 @@ export default function Component() {
           </NavigationMenuList>
         </NavigationMenu>
         <Link className="ml-auto inline-flex h-10 shrink-0 items-center justify-center gap-3 rounded-full bg-brand-yellow px-4 text-xs font-bold text-brand-ink transition-transform hover:-translate-y-0.5 xl:h-[50px] xl:w-[200px] xl:gap-5 xl:px-6 xl:text-sm" href="#contact">
-          <span className="hidden sm:inline">Séance gratuite</span><span className="sm:hidden">Séance</span>
+          <span className="hidden sm:inline">Conférence en ligne</span><span className="sm:hidden">Conférence</span>
           <ArrowRight aria-hidden="true" className="size-4" />
         </Link>
       </div>

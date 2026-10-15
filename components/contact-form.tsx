@@ -42,13 +42,13 @@ export default function ContactForm() {
         <div>
           <p className="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-muted sm:text-sm">
             <span aria-hidden="true" className="h-[2px] w-12 bg-brand-ink/55" />
-            Inscription à la séance gratuite
+            Inscription à la conférence en ligne
           </p>
           <h2 className="max-w-[500px] text-[clamp(2.2rem,4vw,3.6rem)] font-bold leading-[1.04] tracking-[-0.045em] text-brand-ink">
-            Votre séance gratuite de coaching<span className="text-brand-yellow">.</span>
+            Réservez votre place à la conférence<span className="text-brand-yellow">.</span>
           </h2>
           <p className="mt-5 max-w-[440px] text-base leading-7 text-brand-muted sm:text-lg">
-            Remplissez vos informations pour demander votre séance gratuite. Nous vous contacterons pour confirmer les détails et vous aider à avancer vers le bon emploi, le plus vite possible.
+            Remplissez vos coordonnées pour réserver votre place à la conférence en ligne sur le coaching carrière. Vous pourrez y découvrir comment avancer vers le bon emploi, le plus vite possible.
           </p>
           <a className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-ink" href="tel:+212661138432">
             +212 661 138 432
@@ -143,10 +143,10 @@ export default function ContactForm() {
           </div>
           <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p aria-live="polite" className="text-sm text-brand-muted">
-              {sent ? "WhatsApp s’ouvre avec votre demande prête à envoyer." : "Vos informations serviront à demander votre séance gratuite de coaching."}
+              {sent ? "WhatsApp s’ouvre avec vos informations prêtes à envoyer." : "Vos informations serviront à réserver votre place à la conférence en ligne."}
             </p>
             <button className="inline-flex min-h-13 shrink-0 items-center gap-4 bg-brand-yellow px-6 text-sm font-semibold text-brand-ink shadow-[0_6px_18px_rgba(17,17,17,0.08)] transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(17,17,17,0.14)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink sm:text-base" type="submit">
-              Envoyer ma demande sur WhatsApp
+              Envoyer mes informations sur WhatsApp
               <ArrowRight aria-hidden="true" className="size-4" />
             </button>
           </div>

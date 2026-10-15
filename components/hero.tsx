@@ -14,10 +14,10 @@ export default function Hero() {
           Le bon emploi, le plus vite possible<span className="text-brand-yellow">.</span>
         </h1>
         <p className="hero-enter hero-enter-3 mt-7 max-w-[540px] text-[15px] leading-7 text-brand-muted sm:text-base lg:mt-8 lg:text-[17px]">
-          Nous vous aidons à avancer rapidement vers le bon emploi. Remplissez le formulaire pour demander votre séance gratuite de coaching et découvrir les prochaines étapes adaptées à votre profil.
+          Nous vous aidons à avancer rapidement vers le bon emploi. Remplissez le formulaire pour réserver votre place à notre conférence en ligne sur le coaching carrière.
         </p>
         <Link href="#contact" className="hero-enter hero-enter-4 mt-5 inline-flex min-h-12 w-full items-center justify-between gap-7 rounded-full bg-brand-yellow px-6 text-sm font-bold text-brand-ink transition-transform hover:-translate-y-0.5 sm:mt-6 sm:w-auto sm:min-w-[290px] lg:mt-9 lg:min-h-[58px] lg:min-w-[315px] lg:px-8 lg:text-[15px]">
-          Réserver ma séance gratuite
+          Réserver ma place
           <ArrowRight aria-hidden="true" className="size-4" />
         </Link>
       </section>

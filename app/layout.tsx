@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Le bon emploi rapidement | Coaching 4 Job Casablanca",
   description:
-    "Demandez votre séance gratuite de coaching carrière à Casablanca et avancez vers le bon emploi le plus vite possible.",
+    "Réservez votre place à notre conférence en ligne sur le coaching carrière et découvrez comment avancer vers le bon emploi le plus vite possible.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

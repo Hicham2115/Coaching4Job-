@@ -121,7 +121,7 @@ export default function LandingSections() {
                 href="#contact"
                 className="mt-8 inline-flex min-h-[62px] w-full items-center justify-center gap-3 whitespace-nowrap rounded-full bg-brand-yellow px-4 text-sm font-semibold text-brand-ink transition-transform hover:-translate-y-0.5 sm:w-auto sm:justify-between sm:gap-8 sm:px-8 sm:text-lg"
               >
-                Demander ma séance gratuite
+                Réserver ma place à la conférence
                 <ArrowRight aria-hidden="true" className="size-4" />
               </Link>
             </div>
@@ -262,7 +262,7 @@ export default function LandingSections() {
               href="#contact"
               className="mt-8 inline-flex min-h-12 items-center gap-5 bg-brand-yellow px-6 text-sm font-semibold text-brand-ink shadow-[0_8px_24px_rgba(17,17,17,0.12)] transition-transform hover:-translate-y-0.5 sm:min-h-14 sm:px-8 sm:text-base"
             >
-              Demander ma séance gratuite
+              Réserver ma place à la conférence
               <ArrowRight aria-hidden="true" className="size-5" />
             </Link>
           </div>
