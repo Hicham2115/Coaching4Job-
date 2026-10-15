@@ -22,7 +22,7 @@ export default function Hero() {
         </Link>
       </section>
 
-      <section aria-label="Coaching professionnel" className="relative min-h-[520px] overflow-hidden bg-brand-soft lg:min-h-0">
+      <section aria-label="Coaching professionnel" className="relative min-h-[360px] overflow-hidden bg-brand-soft sm:min-h-[460px] lg:min-h-0">
         <Image
           alt="Jeune professionnelle réfléchissant à son avenir dans un espace de travail lumineux"
           className="object-cover object-[center_35%]"
