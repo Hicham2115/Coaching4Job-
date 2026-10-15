@@ -237,7 +237,7 @@ export default function LandingSections() {
           />
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-[linear-gradient(90deg,rgba(248,247,241,0.92)_0%,rgba(248,247,241,0.78)_27%,rgba(248,247,241,0.42)_48%,rgba(248,247,241,0.08)_68%,transparent_82%)]"
+            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(248,247,241,0.84)_0%,rgba(248,247,241,0.72)_58%,rgba(248,247,241,0.28)_100%)] md:bg-[linear-gradient(90deg,rgba(248,247,241,0.92)_0%,rgba(248,247,241,0.78)_27%,rgba(248,247,241,0.42)_48%,rgba(248,247,241,0.08)_68%,transparent_82%)]"
           />
           <div
             aria-hidden="true"
