@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, MapPin, Monitor } from "lucide-react";
+import ContactForm from "@/components/contact-form";
 
 const paths = [
   {
@@ -26,25 +27,10 @@ const paths = [
   },
 ];
 
-const steps = [
-  {
-    title: "Comprendre votre point de départ",
-    description: "Nous échangeons sur votre parcours, vos objectifs et les obstacles que vous rencontrez.",
-  },
-  {
-    title: "Construire un plan concret",
-    description: "Nous définissons les priorités et les outils adaptés à votre situation.",
-  },
-  {
-    title: "Avancer à votre rythme",
-    description: "Vous êtes accompagné·e dans les démarches et les décisions qui comptent.",
-  },
-];
-
 export default function LandingSections() {
   return (
     <>
-      <section id="accompagnements" className="scroll-mt-10 bg-white pb-16 sm:pb-20 lg:pb-24">
+      <section id="accompagnements" className="scroll-reveal scroll-mt-10 bg-white pb-16 sm:pb-20 lg:pb-24">
         <div className="mx-auto max-w-[1360px] px-6 sm:px-10 lg:px-16">
           <div className="border-t-2 border-brand-ink/65 pt-12 sm:pt-14">
             <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-muted">
@@ -80,21 +66,21 @@ export default function LandingSections() {
         </div>
       </section>
 
-      <section id="methode" className="scroll-mt-10 bg-white">
+      <section id="methode" className="scroll-reveal scroll-mt-10 bg-white">
         <div className="mx-auto max-w-[1360px] px-6 sm:px-10 lg:px-16">
-          <div className="grid gap-10 py-16 sm:py-20 lg:grid-cols-[1.08fr_1fr] lg:items-center lg:gap-8 lg:py-24">
+          <div className="grid gap-8 py-12 sm:py-16 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-6 lg:py-14">
             <div className="lg:pr-2">
-              <p className="mb-7 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-muted">
+              <p className="mb-7 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-muted sm:text-sm">
                 <span aria-hidden="true" className="h-[2px] w-12 bg-brand-ink/55" />
                 Notre méthode
               </p>
-              <h2 className="max-w-[620px] text-[clamp(2rem,3vw,2.75rem)] font-bold leading-[1.12] tracking-[-0.045em] text-brand-ink">
+              <h2 className="max-w-[700px] text-[clamp(2.15rem,3.1vw,3.35rem)] font-bold leading-[1.1] tracking-[-0.045em] text-brand-ink">
                 Un accompagnement <span className="lg:block">humain, concret et sur mesure<span className="text-brand-yellow">.</span></span>
               </h2>
-              <p className="mt-7 max-w-[580px] text-[15px] leading-7 text-brand-muted sm:text-base">
+              <p className="mt-7 max-w-[620px] text-base leading-7 text-brand-muted sm:text-lg sm:leading-8">
                 Nous combinons écoute, outils pratiques et connaissance du marché de l’emploi et de l’entrepreneuriat au Maroc pour vous aider à passer de la réflexion à l’action, à votre rythme.
               </p>
-              <Link href="#methode-detail" className="mt-8 inline-flex min-h-[56px] items-center justify-between gap-8 rounded-full bg-brand-yellow px-7 text-[15px] font-semibold text-brand-ink transition-transform hover:-translate-y-0.5">
+              <Link href="#methode-detail" className="mt-8 inline-flex min-h-[62px] items-center justify-between gap-8 rounded-full bg-brand-yellow px-8 text-base font-semibold text-brand-ink transition-transform hover:-translate-y-0.5 sm:text-lg">
                 Découvrir notre méthode
                 <ArrowRight aria-hidden="true" className="size-4" />
               </Link>
@@ -104,6 +90,7 @@ export default function LandingSections() {
             </div>
           </div>
 
+          {/* Temporarily hidden while the progression section is being reviewed.
           <div className="border-t border-brand-ink/60" />
           <div id="methode-detail" className="scroll-mt-10 grid gap-10 py-16 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
             <div>
@@ -124,46 +111,71 @@ export default function LandingSections() {
               ))}
             </div>
           </div>
+          */}
         </div>
       </section>
 
-      <section id="a-propos" className="scroll-mt-10 bg-brand-ink py-16 text-white sm:py-20 lg:py-24">
-        <div className="mx-auto grid max-w-[1360px] gap-10 px-6 sm:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end lg:gap-20 lg:px-16">
-          <div>
-            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-white/65">Coaching 4 Job</p>
-            <h2 className="max-w-[560px] text-3xl font-bold leading-[1.08] tracking-[-0.045em] sm:text-4xl lg:text-5xl">
-              Le bon accompagnement au bon moment<span className="text-brand-yellow">.</span>
-            </h2>
+      <section id="a-propos" className="scroll-reveal scroll-mt-10 bg-white py-14 text-brand-ink sm:py-18 lg:py-20">
+        <div className="mx-auto grid max-w-[1480px] gap-0 px-6 sm:px-10 lg:grid-cols-[0.82fr_1.18fr] lg:px-16">
+          <div aria-hidden="true" className="relative flex min-h-[280px] items-center justify-center overflow-hidden border border-brand-ink bg-brand-ink sm:min-h-[380px] lg:min-h-[440px]">
+            <div className="relative flex size-[220px] items-center justify-center rounded-full border-[28px] border-brand-yellow sm:size-[290px] sm:border-[36px] lg:size-[340px]">
+              <div className="size-[72px] rounded-full bg-brand-yellow sm:size-24" />
+            </div>
+            <div className="absolute inset-y-0 right-0 w-[14%] bg-white" />
           </div>
-          <div className="max-w-[520px]">
-            <p className="text-[15px] leading-7 text-white/80 lg:text-base">
-              Basé à Casablanca, Coaching 4 Job accompagne les personnes qui cherchent leur premier emploi, souhaitent changer de poste ou préparent une transition vers l’entrepreneuriat.
+          <div className="flex flex-col justify-center border border-t-0 border-brand-ink px-7 py-10 sm:px-10 sm:py-14 lg:border-l-0 lg:border-t lg:px-14 xl:px-16">
+            <p className="mb-7 flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.16em] text-brand-muted sm:text-base">
+              Notre approche <span aria-hidden="true" className="h-px flex-1 bg-brand-ink" />
             </p>
-            <p className="mt-5 text-[15px] leading-7 text-white/80 lg:text-base">
-              Notre point de départ : votre parcours, vos compétences et ce que vous voulez faire ensuite.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" className="scroll-mt-10 bg-brand-yellow py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto flex max-w-[1360px] flex-col items-start gap-9 px-6 sm:px-10 lg:flex-row lg:items-end lg:justify-between lg:px-16">
-          <div>
-            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-brand-ink/70">Parlons de votre projet</p>
-            <h2 className="max-w-[760px] text-3xl font-bold leading-[1.08] tracking-[-0.045em] text-brand-ink sm:text-4xl lg:text-5xl">
-              Prêt·e à écrire la suite de votre parcours ?
+            <h2 className="max-w-[760px] text-[clamp(2.2rem,3.4vw,3.5rem)] font-bold leading-[1.08] tracking-[-0.045em] text-brand-ink">
+              Un accompagnement concret, à chaque étape de votre parcours<span className="text-brand-yellow">.</span>
             </h2>
-            <p className="mt-6 max-w-[600px] text-[15px] leading-7 text-brand-ink/75 lg:text-base">Échangeons sur votre situation et la prochaine étape qui vous conviendrait.</p>
+            <p className="mt-6 max-w-[700px] text-lg leading-8 text-brand-muted sm:text-xl sm:leading-9">
+              Nous vous aidons à clarifier vos objectifs, à développer vos compétences et à passer à l’action avec un coaching adapté à votre situation : premier emploi, évolution professionnelle ou projet entrepreneurial.
+            </p>
+            <div className="mt-8 grid gap-6 border-t border-brand-ink/20 pt-6 sm:grid-cols-2 sm:gap-8">
+              <div className="flex gap-3">
+                <MapPin aria-hidden="true" className="mt-0.5 size-6 shrink-0 text-brand-ink" />
+                <div>
+                  <h3 className="text-sm font-semibold text-brand-ink sm:text-base">Casablanca</h3>
+                  <p className="mt-1 text-sm leading-5 text-brand-muted">Des séances en présentiel dans un cadre professionnel et accessible.</p>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <Monitor aria-hidden="true" className="mt-0.5 size-6 shrink-0 text-brand-ink" />
+                <div>
+                  <h3 className="text-sm font-semibold text-brand-ink sm:text-base">À distance</h3>
+                  <p className="mt-1 text-sm leading-5 text-brand-muted">Un accompagnement flexible, où que vous soyez au Maroc ou ailleurs.</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <Link href="tel:+212661138432" className="inline-flex min-h-14 shrink-0 items-center gap-4 rounded-full bg-brand-ink px-7 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 sm:text-base">
-            <Phone aria-hidden="true" className="size-4" />
-            +212 661 138 432
-            <ArrowRight aria-hidden="true" className="size-4" />
-          </Link>
         </div>
       </section>
 
-      <footer className="bg-white py-8">
+      <section className="scroll-reveal bg-white py-2 sm:py-3">
+        <div className="relative mx-auto flex min-h-[430px] max-w-none items-center overflow-hidden border-y border-brand-ink bg-brand-soft px-7 py-12 sm:min-h-[540px] sm:px-12 lg:min-h-[calc(100svh-10rem)] lg:px-[7.2vw]">
+          <Image alt="La mosquée Hassan II et le littoral de Casablanca" className="object-cover object-[58%_54%]" fill sizes="100vw" src="/images/casablanca-method.jpg" />
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-[#f6f3ec]/82 via-[#f6f3ec]/56 to-transparent" />
+          <div aria-hidden="true" className="absolute -bottom-40 -left-36 size-72 rounded-full border-[48px] border-brand-yellow/90 sm:-bottom-56 sm:-left-48 sm:size-[480px] sm:border-[68px]" />
+          <div className="relative z-10 max-w-[680px]">
+            <p className="mb-7 flex items-center gap-5 text-sm font-medium uppercase tracking-[0.12em] text-brand-ink sm:text-base">
+              Coaching 4 Job <span aria-hidden="true" className="h-[2px] w-36 bg-brand-ink sm:w-52" />
+            </p>
+            <h2 className="max-w-[650px] text-[clamp(3rem,6.3vw,6.2rem)] font-bold leading-[0.94] tracking-[-0.055em] text-brand-ink [text-shadow:0_1px_1px_rgba(255,255,255,0.16)]">
+              Votre avenir<br />se construit<br />aujourd’hui.
+            </h2>
+            <Link href="tel:+212661138432" className="mt-8 inline-flex min-h-16 items-center gap-7 bg-brand-yellow px-8 text-lg font-semibold text-brand-ink shadow-[0_8px_24px_rgba(17,17,17,0.12)] transition-transform hover:-translate-y-0.5 sm:min-h-[76px] sm:px-12 sm:text-xl">
+              Choisir mon parcours
+              <ArrowRight aria-hidden="true" className="size-6" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <ContactForm />
+
+      <footer className="scroll-reveal bg-white py-8">
         <div className="mx-auto flex max-w-[1360px] flex-col gap-3 px-6 text-sm text-brand-muted sm:flex-row sm:items-center sm:justify-between sm:px-10 lg:px-16">
           <p className="font-semibold text-brand-ink">Coaching 4 Job</p>
           <p>Casablanca, Maroc · Accompagnement en présentiel et à distance</p>

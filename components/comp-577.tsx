@@ -35,7 +35,7 @@ export default function Component() {
           <NavigationMenuList className="gap-8">
             {navigationLinks.map((link) => (
               <NavigationMenuItem key={link.label}>
-                <NavigationMenuLink className="!p-0 text-sm font-medium text-brand-ink hover:bg-transparent focus:bg-transparent" href={link.href}>
+                <NavigationMenuLink className="nav-link !p-0 text-sm font-medium text-brand-ink hover:bg-transparent focus:bg-transparent" href={link.href}>
                   {link.label}
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -48,7 +48,7 @@ export default function Component() {
         </Link>
       </div>
       <nav aria-label="Navigation mobile" className="flex gap-6 overflow-x-auto border-t border-brand-ink/10 px-6 py-3 text-xs font-medium text-brand-ink sm:px-8 xl:hidden">
-        {navigationLinks.map((link) => <Link className="shrink-0" href={link.href} key={link.label}>{link.label}</Link>)}
+        {navigationLinks.map((link) => <Link className="nav-link shrink-0" href={link.href} key={link.label}>{link.label}</Link>)}
       </nav>
     </header>
   );
