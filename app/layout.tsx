@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Coaching 4 Job | Votre prochain chapitre professionnel",
+  title: "Le bon emploi rapidement | Coaching 4 Job Casablanca",
   description:
-    "Coaching personnalisé à Casablanca pour décrocher votre premier emploi, changer de poste ou vous lancer dans l’entrepreneuriat.",
+    "Demandez votre séance gratuite de coaching carrière à Casablanca et avancez vers le bon emploi le plus vite possible.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

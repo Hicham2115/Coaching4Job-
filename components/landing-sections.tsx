@@ -52,8 +52,8 @@ export default function LandingSections() {
                 </span>
               </h2>
               <p className="max-w-[370px] text-[15px] leading-7 text-brand-muted lg:pb-1 lg:text-base">
-                Des accompagnements adaptés à votre profil et à vos ambitions,
-                pour des choix éclairés et des résultats concrets.
+                Des accompagnements adaptés à votre profil pour trouver le bon
+                emploi plus rapidement et avancer vers vos ambitions.
               </p>
             </div>
           </div>
@@ -114,14 +114,14 @@ export default function LandingSections() {
               </h2>
               <p className="mt-7 max-w-[620px] text-base leading-7 text-brand-muted sm:text-lg sm:leading-8">
                 Nous combinons écoute, outils pratiques et connaissance du
-                marché de l’emploi et de l’entrepreneuriat au Maroc pour vous
-                aider à passer de la réflexion à l’action, à votre rythme.
+                marché marocain pour vous aider à clarifier votre objectif,
+                préparer vos démarches et avancer plus vite vers le bon emploi.
               </p>
               <Link
-                href="#methode-detail"
+                href="#contact"
                 className="mt-8 inline-flex min-h-[62px] w-full items-center justify-center gap-3 whitespace-nowrap rounded-full bg-brand-yellow px-4 text-sm font-semibold text-brand-ink transition-transform hover:-translate-y-0.5 sm:w-auto sm:justify-between sm:gap-8 sm:px-8 sm:text-lg"
               >
-                Découvrir notre méthode
+                Demander ma séance gratuite
                 <ArrowRight aria-hidden="true" className="size-4" />
               </Link>
             </div>
@@ -185,10 +185,10 @@ export default function LandingSections() {
               <span className="text-brand-yellow">.</span>
             </h2>
             <p className="mt-4 max-w-[700px] text-base leading-7 text-brand-muted sm:mt-6 sm:text-xl sm:leading-9">
-              Nous vous aidons à clarifier vos objectifs, à développer vos
-              compétences et à passer à l’action avec un coaching adapté à votre
-              situation : premier emploi, évolution professionnelle ou projet
-              entrepreneurial.
+              Nous vous aidons à clarifier vos objectifs et à développer les
+              compétences qui vous rapprochent du bon emploi, le plus rapidement
+              possible. Le coaching s’adapte à votre situation : premier emploi,
+              évolution professionnelle ou projet entrepreneurial.
             </p>
             <div className="mt-6 grid gap-5 border-t border-brand-ink/20 pt-5 sm:mt-8 sm:gap-8 sm:pt-6 sm:grid-cols-2">
               <div className="flex gap-3">
@@ -259,10 +259,10 @@ export default function LandingSections() {
               aujourd’hui.
             </h2>
             <Link
-              href="tel:+212661138432"
+              href="#contact"
               className="mt-8 inline-flex min-h-12 items-center gap-5 bg-brand-yellow px-6 text-sm font-semibold text-brand-ink shadow-[0_8px_24px_rgba(17,17,17,0.12)] transition-transform hover:-translate-y-0.5 sm:min-h-14 sm:px-8 sm:text-base"
             >
-              Choisir mon parcours
+              Demander ma séance gratuite
               <ArrowRight aria-hidden="true" className="size-5" />
             </Link>
           </div>
@@ -288,10 +288,9 @@ export default function LandingSections() {
                 </span>
               </a>
               <p className="mt-4 max-w-[310px] text-sm leading-6 text-white/65">
-                Un accompagnement humain pour avancer avec confiance dans votre
-                parcours professionnel.
-              </p>
-            </div>
+                Un accompagnement humain pour trouver le bon emploi plus
+                rapidement et avancer avec confiance.
+              </p> </div>
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/50">
                 Explorer
