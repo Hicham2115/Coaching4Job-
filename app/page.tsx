@@ -1,6 +1,11 @@
 import Component from "@/components/comp-577";
 import Hero from "@/components/hero";
-import LandingSections from "@/components/landing-sections";
+import Accompaniments from "@/components/accompaniments";
+import Method from "@/components/method";
+import Approach from "@/components/approach";
+import ConferenceCta from "@/components/conference-cta";
+import SiteFooter from "@/layout/site-footer";
+import ContactForm from "@/components/contact-form";
 import ScrollReveal from "@/components/scroll-reveal";
 
 export default function Home() {
@@ -9,7 +14,12 @@ export default function Home() {
       <Component />
       <ScrollReveal />
       <Hero />
-      <LandingSections />
+      <Accompaniments />
+      <Method />
+      <Approach />
+      <ConferenceCta />
+      <ContactForm />
+      <SiteFooter />
     </>
   );
 }
