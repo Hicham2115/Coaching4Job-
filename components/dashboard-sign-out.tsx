@@ -28,10 +28,11 @@ export default function DashboardSignOut() {
     <button
       type="button"
       onClick={signOut}
-      className="inline-flex min-h-11 items-center gap-2 text-xs font-medium text-brand-muted transition hover:text-brand-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-ink"
+      aria-label="Se déconnecter"
+      className="inline-flex min-h-10 shrink-0 cursor-pointer items-center gap-2 rounded-sm border border-brand-ink/15 bg-white px-3 text-xs font-semibold text-brand-ink transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink"
     >
       <LogOut aria-hidden="true" className="size-4" />
-      <span className="hidden sm:inline">Se déconnecter</span>
+      <span className="hidden md:inline">Se déconnecter</span>
     </button>
   );
 }

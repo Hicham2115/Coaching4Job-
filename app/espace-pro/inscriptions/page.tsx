@@ -7,6 +7,7 @@ import { ArrowRight, CircleUserRound } from "lucide-react";
 
 import DashboardSignOut from "@/components/dashboard-sign-out";
 import InscriptionFilters from "@/components/inscription-filters";
+import RegistrationStatusSelect from "@/components/registration-status-select";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   Pagination,
@@ -39,18 +40,6 @@ type SearchParams = Promise<{
   status?: string | string[];
   page?: string | string[];
 }>;
-
-const statusLabels = {
-  new: "Nouveau",
-  to_contact: "À contacter",
-  contacted: "Contacté",
-} as const;
-
-const statusStyles = {
-  new: "bg-brand-yellow/60 text-brand-ink",
-  to_contact: "bg-brand-ink/10 text-brand-ink",
-  contacted: "bg-emerald-100 text-emerald-900",
-} as const;
 
 const pageSize = 8;
 const allowedStatuses = new Set(["new", "to_contact", "contacted"]);
@@ -170,7 +159,7 @@ async function InscriptionsContent({
               className="h-auto w-[174px] sm:w-[225px]"
             />
           </Link>
-          <nav aria-label="Navigation de l’espace pro" className="hidden h-full items-center gap-8 sm:flex">
+          <nav aria-label="Navigation de l’espace pro" className="hidden h-full items-center gap-8 lg:flex">
             <Link href="/espace-pro/tableau-de-bord" className="flex min-h-[68px] items-center border-b-2 border-transparent px-1 text-sm text-brand-muted transition hover:border-brand-yellow hover:text-brand-ink">
               Vue d’ensemble
             </Link>
@@ -179,17 +168,17 @@ async function InscriptionsContent({
             </Link>
           </nav>
           <div className="flex items-center gap-3 sm:gap-5">
-            <div className="hidden items-center gap-2 sm:flex">
+            <div className="hidden items-center gap-2 md:flex">
               <CircleUserRound aria-hidden="true" className="size-8 fill-brand-ink/10 text-brand-ink/70" />
-              <div className="max-w-44 leading-tight">
-                <p className="truncate text-xs font-semibold">{session.user.name}</p>
+              <div className="max-w-64 leading-tight">
+                <p className="break-words text-xs font-semibold">{session.user.name}</p>
                 <p className="text-[11px] text-brand-muted">Propriétaire</p>
               </div>
             </div>
             <DashboardSignOut />
           </div>
         </div>
-        <nav aria-label="Navigation mobile" className="flex border-t border-brand-ink/10 px-5 sm:hidden">
+        <nav aria-label="Navigation mobile" className="flex border-t border-brand-ink/10 px-5 lg:hidden">
           <Link href="/espace-pro/tableau-de-bord" className="border-b-2 border-transparent px-1 py-3 text-sm text-brand-muted">Vue d’ensemble</Link>
           <Link href="/espace-pro/inscriptions" aria-current="page" className="ml-6 border-b-2 border-brand-yellow px-1 py-3 text-sm font-semibold">Inscriptions</Link>
         </nav>
@@ -230,7 +219,7 @@ async function InscriptionsContent({
                     <th className="w-[18%] px-4">E-mail</th>
                     <th className="w-[21%] px-4">Situation actuelle</th>
                     <th className="w-[14%] px-4">Date d’inscription ↓</th>
-                    <th className="w-[11%] px-4">Statut</th>
+                    <th className="w-[11%] px-4 text-center">Statut</th>
                     <th className="w-[10%] px-4">Actions</th>
                   </tr>
                 </thead>
@@ -242,7 +231,13 @@ async function InscriptionsContent({
                       <td className="truncate px-4 text-brand-muted" title={registration.email}>{registration.email}</td>
                       <td className="truncate px-4 text-brand-muted" title={registration.situation}>{registration.situation}</td>
                       <td className="whitespace-nowrap px-4 text-brand-muted">{formatDate(registration.created_at)}</td>
-                      <td className="px-4"><StatusBadge status={registration.status} /></td>
+                      <td className="px-4 text-center">
+                        <RegistrationStatusSelect
+                          registrationId={registration.id}
+                          registrationName={registration.name}
+                          initialStatus={registration.status}
+                        />
+                      </td>
                       <td className="px-4">
                         <Link href={`/espace-pro/inscriptions/${registration.id}`} className="inline-flex h-8 items-center gap-2 rounded-sm border border-brand-ink/15 px-3 font-semibold transition hover:border-brand-ink hover:bg-brand-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink">
                           Voir <ArrowRight aria-hidden="true" className="size-3.5" />
@@ -262,7 +257,11 @@ async function InscriptionsContent({
                       <p className="truncate text-sm font-semibold">{registration.name}</p>
                       <p className="mt-1 truncate text-xs text-brand-muted">{registration.situation}</p>
                     </div>
-                    <StatusBadge status={registration.status} />
+                    <RegistrationStatusSelect
+                      registrationId={registration.id}
+                      registrationName={registration.name}
+                      initialStatus={registration.status}
+                    />
                   </div>
                   <div className="grid gap-1 text-xs text-brand-muted sm:grid-cols-2">
                     <a href={`tel:${registration.phone}`} className="min-h-8 inline-flex items-center underline underline-offset-2">{registration.phone}</a>
@@ -318,14 +317,6 @@ async function InscriptionsContent({
         )}
       </main>
     </div>
-  );
-}
-
-function StatusBadge({ status }: { status: Registration["status"] }) {
-  return (
-    <span className={`inline-flex whitespace-nowrap rounded px-3 py-1.5 text-[11px] font-medium ${statusStyles[status]}`}>
-      {statusLabels[status]}
-    </span>
   );
 }
 

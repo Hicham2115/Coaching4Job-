@@ -118,7 +118,7 @@ async function InscriptionDetail({
               className="h-auto w-[174px] sm:w-[225px]"
             />
           </Link>
-          <nav aria-label="Navigation de l’espace pro" className="hidden h-full items-center gap-8 sm:flex">
+          <nav aria-label="Navigation de l’espace pro" className="hidden h-full items-center gap-8 lg:flex">
             <Link href="/espace-pro/tableau-de-bord" className="flex min-h-[68px] items-center border-b-2 border-transparent px-1 text-sm text-brand-muted transition hover:border-brand-yellow hover:text-brand-ink">
               Vue d’ensemble
             </Link>
@@ -127,17 +127,17 @@ async function InscriptionDetail({
             </Link>
           </nav>
           <div className="flex items-center gap-3 sm:gap-5">
-            <div className="hidden items-center gap-2 sm:flex">
+            <div className="hidden items-center gap-2 md:flex">
               <CircleUserRound aria-hidden="true" className="size-8 fill-brand-ink/10 text-brand-ink/70" />
-              <div className="max-w-44 leading-tight">
-                <p className="truncate text-xs font-semibold">{session.user.name}</p>
+              <div className="max-w-64 leading-tight">
+                <p className="break-words text-xs font-semibold">{session.user.name}</p>
                 <p className="text-[11px] text-brand-muted">Propriétaire</p>
               </div>
             </div>
             <DashboardSignOut />
           </div>
         </div>
-        <nav aria-label="Navigation mobile" className="flex border-t border-brand-ink/10 px-5 sm:hidden">
+        <nav aria-label="Navigation mobile" className="flex border-t border-brand-ink/10 px-5 lg:hidden">
           <Link href="/espace-pro/tableau-de-bord" className="border-b-2 border-transparent px-1 py-3 text-sm text-brand-muted">Vue d’ensemble</Link>
           <Link href="/espace-pro/inscriptions" aria-current="page" className="ml-6 border-b-2 border-brand-yellow px-1 py-3 text-sm font-semibold">Inscriptions</Link>
         </nav>

@@ -30,12 +30,29 @@ export async function updateRegistrationStatus(
   _previousState: ActionState,
   formData: FormData,
 ): Promise<ActionState> {
+  return saveRegistrationStatus(
+    formData.get("registrationId"),
+    formData.get("status"),
+  );
+}
+
+export async function setRegistrationStatus(
+  registrationId: unknown,
+  status: unknown,
+): Promise<ActionState> {
+  return saveRegistrationStatus(registrationId, status);
+}
+
+async function saveRegistrationStatus(
+  registrationId: unknown,
+  statusValue: unknown,
+): Promise<ActionState> {
   try {
     const userId = await getOwnerId();
     if (!userId) return { kind: "error", message: "Votre session a expiré. Reconnectez-vous." };
 
-    const id = idSchema.safeParse(formData.get("registrationId"));
-    const status = statusSchema.safeParse(formData.get("status"));
+    const id = idSchema.safeParse(registrationId);
+    const status = statusSchema.safeParse(statusValue);
     if (!id.success || !status.success) {
       return { kind: "error", message: "Le statut sélectionné n’est pas valide." };
     }

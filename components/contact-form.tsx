@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { useForm } from "@tanstack/react-form";
-import { ArrowRight, Check, ChevronDown, LoaderCircle } from "lucide-react";
+import { Dialog } from "@base-ui/react/dialog";
+import { ArrowRight, Check, CheckCircle2, ChevronDown, LoaderCircle } from "lucide-react";
 import { Select } from "@base-ui/react/select";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -33,9 +34,8 @@ const contactSchema = z.object({
 type ContactValues = z.input<typeof contactSchema>;
 
 export default function ContactForm() {
-  const [sent, setSent] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
-  const [whatsappUrl, setWhatsappUrl] = useState<string | null>(null);
+  const [thankYouOpen, setThankYouOpen] = useState(false);
 
   const form = useForm({
     defaultValues: {
@@ -51,11 +51,6 @@ export default function ContactForm() {
 
       if (isSaving) return;
       setIsSaving(true);
-      setSent(false);
-      setWhatsappUrl(null);
-
-      const whatsappTab = window.open("about:blank", "_blank");
-      if (whatsappTab) whatsappTab.opener = null;
 
       try {
         const result = await createRegistration({
@@ -66,26 +61,13 @@ export default function ContactForm() {
         });
 
         if (!result.success) {
-          whatsappTab?.close();
           toast.error(result.message);
           return;
         }
 
-        const { name, status, phone, email } = parsed.data;
-        const text = `Bonjour Coaching 4 Job,\n\nNom : ${name}\nSituation actuelle : ${status}\nTéléphone : ${phone}\nE-mail : ${email}`;
-        const nextWhatsappUrl = `https://wa.me/212661138432?text=${encodeURIComponent(text)}`;
-
-        setSent(true);
         form.reset();
-        toast.success("Votre inscription a été enregistrée.");
-
-        if (whatsappTab) {
-          whatsappTab.location.href = nextWhatsappUrl;
-        } else {
-          setWhatsappUrl(nextWhatsappUrl);
-        }
+        setThankYouOpen(true);
       } catch {
-        whatsappTab?.close();
         toast.error("Impossible d’enregistrer votre inscription. Réessayez.");
       } finally {
         setIsSaving(false);
@@ -149,8 +131,6 @@ export default function ContactForm() {
                       onBlur={field.handleBlur}
                       onChange={(event) => {
                         field.handleChange(event.target.value);
-                        setSent(false);
-                        setWhatsappUrl(null);
                       }}
                       placeholder="Ex. Salma El Amrani"
                       value={field.state.value}
@@ -181,11 +161,13 @@ export default function ContactForm() {
                 return (
                   <div className="text-sm font-semibold text-brand-ink">
                     <Select.Root
+                      items={situations.map((situation) => ({
+                        value: situation,
+                        label: situation,
+                      }))}
                       name={field.name}
                       onValueChange={(value) => {
                         field.handleChange(value ?? "");
-                        setSent(false);
-                        setWhatsappUrl(null);
                       }}
                       value={field.state.value}
                     >
@@ -260,8 +242,6 @@ export default function ContactForm() {
                       onBlur={field.handleBlur}
                       onChange={(event) => {
                         field.handleChange(event.target.value);
-                        setSent(false);
-                        setWhatsappUrl(null);
                       }}
                       placeholder="+212 6 12 34 56 78"
                       type="tel"
@@ -294,8 +274,6 @@ export default function ContactForm() {
                       onBlur={field.handleBlur}
                       onChange={(event) => {
                         field.handleChange(event.target.value);
-                        setSent(false);
-                        setWhatsappUrl(null);
                       }}
                       placeholder="vous@exemple.com"
                       type="email"
@@ -315,20 +293,8 @@ export default function ContactForm() {
             </form.Field>
           </div>
           <div className="mt-6 grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-6">
-            <p aria-live="polite" className="min-w-0 text-sm leading-relaxed text-brand-muted">
-              {sent
-                ? "Votre inscription est enregistrée. WhatsApp peut maintenant s’ouvrir pour vous."
-                : "Vos informations serviront à réserver votre place à la conférence en ligne."}
-              {whatsappUrl && (
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="ml-1 font-semibold text-brand-ink underline underline-offset-4"
-                >
-                  Ouvrir WhatsApp
-                </a>
-              )}
+            <p className="min-w-0 text-sm leading-relaxed text-brand-muted">
+              Vos informations serviront à réserver votre place à la conférence en ligne.
             </p>
             <button
               className="group inline-flex min-h-12 w-full items-center justify-center gap-3 bg-brand-yellow px-4 text-sm font-semibold text-brand-ink transition-colors duration-200 hover:bg-brand-ink hover:text-white motion-reduce:transition-none cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink disabled:cursor-wait disabled:hover:bg-brand-yellow disabled:hover:text-brand-ink disabled:opacity-70 sm:w-auto sm:px-5"
@@ -345,7 +311,7 @@ export default function ContactForm() {
                 </>
               ) : (
                 <>
-                  Continuer sur WhatsApp
+                  Envoyer mon inscription
                   <ArrowRight
                     aria-hidden="true"
                     className="size-4 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none"
@@ -355,6 +321,26 @@ export default function ContactForm() {
             </button>
           </div>
         </form>
+
+        <Dialog.Root open={thankYouOpen} onOpenChange={setThankYouOpen}>
+          <Dialog.Portal>
+            <Dialog.Backdrop className="fixed inset-0 z-50 bg-brand-ink/45 transition-opacity duration-200 data-ending-style:opacity-0 data-starting-style:opacity-0" />
+            <Dialog.Popup className="fixed left-1/2 top-1/2 z-50 w-[calc(100vw-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 border border-brand-ink/20 bg-white p-6 text-center shadow-xl outline-none transition-[scale,opacity] duration-200 data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0 sm:p-8">
+              <span className="mx-auto flex size-14 items-center justify-center rounded-full bg-brand-yellow/55 text-brand-ink">
+                <CheckCircle2 aria-hidden="true" className="size-7" />
+              </span>
+              <Dialog.Title className="mt-5 text-2xl font-bold tracking-[-0.04em] text-brand-ink">
+                Merci pour votre inscription !
+              </Dialog.Title>
+              <Dialog.Description className="mt-2 text-sm leading-6 text-brand-muted">
+                Votre demande a bien été enregistrée. Notre équipe vous contactera prochainement.
+              </Dialog.Description>
+              <Dialog.Close className="mt-6 inline-flex min-h-11 w-full cursor-pointer items-center justify-center bg-brand-yellow px-5 text-sm font-semibold text-brand-ink transition-colors hover:bg-brand-ink hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink sm:w-auto">
+                Fermer
+              </Dialog.Close>
+            </Dialog.Popup>
+          </Dialog.Portal>
+        </Dialog.Root>
       </div>
     </section>
   );

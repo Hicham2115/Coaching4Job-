@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import DashboardSignOut from "@/components/dashboard-sign-out";
+import RegistrationStatusSelect from "@/components/registration-status-select";
 import { Skeleton } from "@/components/ui/skeleton";
 import { databasePool } from "@/lib/database";
 import { auth } from "@/lib/auth";
@@ -35,18 +36,6 @@ type DashboardStats = {
   toContact: number;
   contacted: number;
 };
-
-const statusLabels = {
-  new: "Nouveau",
-  to_contact: "À contacter",
-  contacted: "Contacté",
-} as const;
-
-const statusStyles = {
-  new: "bg-brand-yellow/50 text-brand-ink",
-  to_contact: "bg-brand-ink/10 text-brand-ink",
-  contacted: "bg-emerald-100 text-emerald-900",
-} as const;
 
 export default function DashboardPage() {
   return (
@@ -183,7 +172,7 @@ async function DashboardContent() {
           </Link>
           <nav
             aria-label="Navigation de l’espace pro"
-            className="hidden h-full items-center gap-8 sm:flex"
+            className="hidden h-full items-center gap-8 lg:flex"
           >
             <Link
               href="/espace-pro/tableau-de-bord"
@@ -200,13 +189,13 @@ async function DashboardContent() {
             </Link>
           </nav>
           <div className="flex items-center gap-3 sm:gap-5">
-            <div className="hidden items-center gap-2 sm:flex">
+            <div className="hidden items-center gap-2 md:flex">
               <CircleUserRound
                 aria-hidden="true"
                 className="size-8 fill-brand-ink/10 text-brand-ink/70"
               />
-              <div className="max-w-44 leading-tight">
-                <p className="truncate text-xs font-semibold">
+              <div className="max-w-64 leading-tight">
+                <p className="break-words text-xs font-semibold">
                   {session.user.name}
                 </p>
                 <p className="text-[11px] text-brand-muted">Propriétaire</p>
@@ -217,7 +206,7 @@ async function DashboardContent() {
         </div>
         <nav
           aria-label="Navigation mobile"
-          className="flex border-t border-brand-ink/10 px-5 sm:hidden"
+          className="flex border-t border-brand-ink/10 px-5 lg:hidden"
         >
           <Link
             href="/espace-pro/tableau-de-bord"
@@ -317,7 +306,7 @@ async function DashboardContent() {
                 <span>Nom</span>
                 <span>Situation</span>
                 <span>Date d’arrivée</span>
-                <span>Statut</span>
+                <span className="text-center">Statut</span>
               </div>
               <ul className="divide-y divide-brand-ink/10">
                 {registrations.map((registration) => (
@@ -340,11 +329,11 @@ async function DashboardContent() {
                         timeZone: "Africa/Casablanca",
                       }).format(registration.created_at)}
                     </time>
-                    <span
-                      className={`w-fit rounded px-2 py-1 text-[11px] font-medium ${statusStyles[registration.status]}`}
-                    >
-                      {statusLabels[registration.status]}
-                    </span>
+                    <RegistrationStatusSelect
+                      registrationId={registration.id}
+                      registrationName={registration.name}
+                      initialStatus={registration.status}
+                    />
                   </li>
                 ))}
               </ul>
