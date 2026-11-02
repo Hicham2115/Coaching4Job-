@@ -73,7 +73,8 @@ async function saveRegistrationStatus(
     revalidatePath("/espace-pro/tableau-de-bord");
 
     return { kind: "success", message: "Le statut a été mis à jour." };
-  } catch {
+  } catch (error) {
+    console.error("Unable to update registration status:", error);
     return { kind: "error", message: "Impossible d’enregistrer le statut. Réessayez." };
   }
 }
@@ -108,7 +109,8 @@ export async function addRegistrationNote(
 
     revalidatePath(`/espace-pro/inscriptions/${id.data}`);
     return { kind: "success", message: "La note a été ajoutée." };
-  } catch {
+  } catch (error) {
+    console.error("Unable to add registration note:", error);
     return { kind: "error", message: "Impossible d’ajouter la note. Réessayez." };
   }
 }

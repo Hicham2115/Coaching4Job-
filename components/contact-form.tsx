@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "@tanstack/react-form";
 import { Dialog } from "@base-ui/react/dialog";
 import { ArrowRight, Check, CheckCircle2, ChevronDown, LoaderCircle } from "lucide-react";
@@ -36,6 +36,7 @@ type ContactValues = z.input<typeof contactSchema>;
 export default function ContactForm() {
   const [isSaving, setIsSaving] = useState(false);
   const [thankYouOpen, setThankYouOpen] = useState(false);
+  const websiteRef = useRef<HTMLInputElement>(null);
 
   const form = useForm({
     defaultValues: {
@@ -58,6 +59,7 @@ export default function ContactForm() {
           situation: parsed.data.status,
           phone: parsed.data.phone,
           email: parsed.data.email,
+          website: websiteRef.current?.value ?? "",
         });
 
         if (!result.success) {
@@ -115,6 +117,17 @@ export default function ContactForm() {
             void form.handleSubmit();
           }}
         >
+          <div className="absolute -left-[9999px]" aria-hidden="true">
+            <label htmlFor="registration-website">Site web</label>
+            <input
+              id="registration-website"
+              name="website"
+              ref={websiteRef}
+              type="text"
+              autoComplete="off"
+              tabIndex={-1}
+            />
+          </div>
           <div className="grid gap-5 sm:grid-cols-2 sm:gap-6">
             <form.Field name="name">
               {(field) => {

@@ -123,7 +123,8 @@ async function InscriptionsContent({
       dataValues,
     );
     registrations = dataResult.rows;
-  } catch {
+  } catch (error) {
+    console.error("Unable to load registrations:", error);
     hasLoadError = true;
   }
 

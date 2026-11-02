@@ -102,7 +102,8 @@ async function InscriptionDetail({
     ]);
     registration = registrationResult.rows[0];
     notes = notesResult.rows;
-  } catch {
+  } catch (error) {
+    console.error("Unable to load registration details:", error);
     hasLoadError = true;
   }
 

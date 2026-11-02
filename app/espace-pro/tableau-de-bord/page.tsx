@@ -127,9 +127,6 @@ async function DashboardContent() {
         LIMIT 8`),
     ]);
 
-    // console.log("Stats result:", statsResult.rows);
-    // console.log("Registrations result:", registrationsResult.rows);
-
     const counts = statsResult.rows[0];
     stats = {
       total: Number(counts.total),
@@ -138,7 +135,8 @@ async function DashboardContent() {
       contacted: Number(counts.contacted_count),
     };
     registrations = registrationsResult.rows;
-  } catch {
+  } catch (error) {
+    console.error("Unable to load dashboard:", error);
     hasLoadError = true;
   }
 
