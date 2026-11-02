@@ -70,6 +70,17 @@ export default function SiteFooter() {
         © <CopyrightYear /> Coaching 4 Job · Casablanca, Maroc
       </div>
     </div>
+    <p className="mx-auto max-w-[1440px] px-6 py-4 text-center text-[12px] text-white sm:px-8 lg:px-12">
+      Designed &amp; developed by{" "}
+      <a
+        href="https://www.stallionadvertising.ma/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline decoration-transparent underline-offset-2 transition-colors duration-200 hover:text-white hover:decoration-teal-400 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-yellow"
+      >
+        Stallion Advertising
+      </a>
+    </p>
   </footer>
   );
 }
