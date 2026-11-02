@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { MapPin, Monitor } from "lucide-react";
 
 export default function Approach() {
@@ -11,10 +12,13 @@ export default function Approach() {
         aria-hidden="true"
         className="relative flex min-h-[200px] items-center justify-center overflow-hidden border border-brand-ink bg-brand-ink sm:min-h-[380px] lg:min-h-[440px]"
       >
-        <div className="relative flex size-[150px] items-center justify-center rounded-full border-[20px] border-brand-yellow sm:size-[290px] sm:border-[36px] lg:size-[340px]">
-          <div className="size-12 rounded-full bg-brand-yellow sm:size-24" />
-        </div>
-        <div className="absolute inset-y-0 right-0 w-[14%] bg-white" />
+        <Image
+          src="/images/approach-logo.svg"
+          alt=""
+          width={180}
+          height={180}
+          className="h-auto w-[150px] sm:w-[290px] lg:w-[340px]"
+        />
       </div>
       <div className="flex flex-col justify-center border border-t-0 border-brand-ink px-5 py-7 sm:px-10 sm:py-14 lg:border-l-0 lg:border-t lg:px-14 xl:px-16">
         <p className="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-muted sm:mb-7 sm:text-base">
