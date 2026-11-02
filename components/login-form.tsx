@@ -163,19 +163,6 @@ export default function LoginForm() {
             );
           }}
         </form.Field>
-        <div className="flex justify-end">
-          <button
-            type="button"
-            onClick={() =>
-              toast.info(
-                "La récupération du mot de passe n’est pas encore configurée.",
-              )
-            }
-            className="min-h-11 text-xs text-brand-muted underline underline-offset-4 hover:text-brand-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-ink"
-          >
-            Mot de passe oublié ?
-          </button>
-        </div>
         <form.Subscribe selector={(state) => state.isSubmitting}>
           {(isSubmitting) => (
             <Button
