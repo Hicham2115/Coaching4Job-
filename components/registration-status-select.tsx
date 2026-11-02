@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 import { Select } from "@base-ui/react/select";
 import { Check, ChevronDown, LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
@@ -30,6 +31,7 @@ export default function RegistrationStatusSelect({
   registrationName: string;
   initialStatus: Status;
 }) {
+  const router = useRouter();
   const [status, setStatus] = useState(initialStatus);
   const [isPending, startTransition] = useTransition();
 
@@ -44,6 +46,7 @@ export default function RegistrationStatusSelect({
       const result = await setRegistrationStatus(registrationId, nextStatus);
       if (result.kind === "success") {
         toast.success(result.message);
+        router.refresh();
         return;
       }
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Check, CircleUserRound, LoaderCircle, MessageCircleMore } from "lucide-react";
 
@@ -34,6 +35,7 @@ export default function RegistrationFollowUp({
   currentStatus: FollowUpStatus;
   notes: Note[];
 }) {
+  const router = useRouter();
   const [status, setStatus] = useState(currentStatus);
   const [note, setNote] = useState("");
   const [statusState, statusAction, statusPending] = useActionState(
@@ -50,16 +52,20 @@ export default function RegistrationFollowUp({
   );
 
   useEffect(() => {
-    if (statusState.kind === "success") toast.success(statusState.message);
+    if (statusState.kind === "success") {
+      toast.success(statusState.message);
+      router.refresh();
+    }
     if (statusState.kind === "error") toast.error(statusState.message);
-  }, [statusState]);
+  }, [router, statusState]);
 
   useEffect(() => {
     if (noteState.kind === "success") {
       toast.success(noteState.message);
+      router.refresh();
     }
     if (noteState.kind === "error") toast.error(noteState.message);
-  }, [noteState]);
+  }, [noteState, router]);
 
   return (
     <>

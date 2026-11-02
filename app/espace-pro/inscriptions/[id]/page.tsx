@@ -287,8 +287,7 @@ async function InscriptionDetail({
                     </a>
                   </div>
                   <p className="mt-4 text-[11px] leading-relaxed text-brand-muted">
-                    Ouvrir WhatsApp lance une conversation avec ce numéro. Cela
-                    ne confirme pas l’envoi d’un message.
+                    Ouvrir WhatsApp lance une conversation avec ce numéro.
                   </p>
                 </section>
               </div>

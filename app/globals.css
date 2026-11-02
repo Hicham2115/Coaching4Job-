@@ -152,6 +152,7 @@
 .cn-toast [data-title] {
   font-weight: 650;
   line-height: 1.35;
+  white-space: nowrap;
 }
 
 .cn-toast [data-description] {
@@ -159,6 +160,7 @@
   color: #4a4a4a;
   font-size: 13px;
   line-height: 1.4;
+  white-space: nowrap;
 }
 
 .cn-toast[data-type="success"] [data-icon] {
