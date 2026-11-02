@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { ArrowRight, CircleUserRound } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import DashboardSignOut from "@/components/dashboard-sign-out";
 import InscriptionFilters from "@/components/inscription-filters";
@@ -169,7 +169,15 @@ async function InscriptionsContent({
           </nav>
           <div className="flex items-center gap-3 sm:gap-5">
             <div className="hidden items-center gap-2 md:flex">
-              <CircleUserRound aria-hidden="true" className="size-8 fill-brand-ink/10 text-brand-ink/70" />
+              <span aria-hidden="true" className="relative size-8 shrink-0 overflow-hidden rounded-full border border-brand-ink/15 bg-white">
+                <Image
+                  src="/images/dashboard-owner.jpeg"
+                  alt=""
+                  fill
+                  sizes="32px"
+                  className="object-cover object-[center_28%]"
+                />
+              </span>
               <div className="max-w-64 leading-tight">
                 <p className="break-words text-xs font-semibold">{session.user.name}</p>
                 <p className="text-[11px] text-brand-muted">Propriétaire</p>
