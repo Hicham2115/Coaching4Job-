@@ -69,7 +69,11 @@ async function InscriptionDetail({
     redirect("/espace-pro");
   }
 
-  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id)) {
+  if (
+    !/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
+      id,
+    )
+  ) {
     notFound();
   }
 
@@ -108,7 +112,10 @@ async function InscriptionDetail({
     <div className="min-h-svh bg-brand-soft text-brand-ink">
       <header className="border-b border-brand-ink/20 bg-white">
         <div className="mx-auto flex min-h-[68px] max-w-[1440px] items-center justify-between gap-5 px-5 sm:px-8">
-          <Link href="/espace-pro/tableau-de-bord" aria-label="Coaching 4 Job, vue d’ensemble">
+          <Link
+            href="/espace-pro/tableau-de-bord"
+            aria-label="Coaching 4 Job, vue d’ensemble"
+          >
             <Image
               src="/images/coaching4job-logo.png"
               alt="Coaching 4 Job"
@@ -118,17 +125,30 @@ async function InscriptionDetail({
               className="h-auto w-[174px] sm:w-[225px]"
             />
           </Link>
-          <nav aria-label="Navigation de l’espace pro" className="hidden h-full items-center gap-8 lg:flex">
-            <Link href="/espace-pro/tableau-de-bord" className="flex min-h-[68px] items-center border-b-2 border-transparent px-1 text-sm text-brand-muted transition hover:border-brand-yellow hover:text-brand-ink">
+          <nav
+            aria-label="Navigation de l’espace pro"
+            className="hidden h-full items-center gap-8 lg:flex"
+          >
+            <Link
+              href="/espace-pro/tableau-de-bord"
+              className="flex min-h-[68px] items-center border-b-2 border-transparent px-1 text-sm text-brand-muted transition hover:border-brand-yellow hover:text-brand-ink"
+            >
               Vue d’ensemble
             </Link>
-            <Link href="/espace-pro/inscriptions" aria-current="page" className="flex min-h-[68px] items-center border-b-2 border-brand-yellow px-1 text-sm font-semibold">
+            <Link
+              href="/espace-pro/inscriptions"
+              aria-current="page"
+              className="flex min-h-[68px] items-center border-b-2 border-brand-yellow px-1 text-sm font-semibold"
+            >
               Inscriptions
             </Link>
           </nav>
           <div className="flex items-center gap-3 sm:gap-5">
             <div className="hidden items-center gap-2 md:flex">
-              <span aria-hidden="true" className="relative size-8 shrink-0 overflow-hidden rounded-full border border-brand-ink/15 bg-white">
+              <span
+                aria-hidden="true"
+                className="relative size-8 shrink-0 overflow-hidden rounded-full border border-brand-ink/15 bg-white"
+              >
                 <Image
                   src="/images/dashboard-owner.jpeg"
                   alt=""
@@ -138,16 +158,32 @@ async function InscriptionDetail({
                 />
               </span>
               <div className="max-w-64 leading-tight">
-                <p className="break-words text-xs font-semibold">{session.user.name}</p>
+                <p className="break-words text-xs font-semibold">
+                  {session.user.name}
+                </p>
                 <p className="text-[11px] text-brand-muted">Propriétaire</p>
               </div>
             </div>
             <DashboardSignOut />
           </div>
         </div>
-        <nav aria-label="Navigation mobile" className="flex border-t border-brand-ink/10 px-5 lg:hidden">
-          <Link href="/espace-pro/tableau-de-bord" className="border-b-2 border-transparent px-1 py-3 text-sm text-brand-muted">Vue d’ensemble</Link>
-          <Link href="/espace-pro/inscriptions" aria-current="page" className="ml-6 border-b-2 border-brand-yellow px-1 py-3 text-sm font-semibold">Inscriptions</Link>
+        <nav
+          aria-label="Navigation mobile"
+          className="flex border-t border-brand-ink/10 px-5 lg:hidden"
+        >
+          <Link
+            href="/espace-pro/tableau-de-bord"
+            className="border-b-2 border-transparent px-1 py-3 text-sm text-brand-muted"
+          >
+            Vue d’ensemble
+          </Link>
+          <Link
+            href="/espace-pro/inscriptions"
+            aria-current="page"
+            className="ml-6 border-b-2 border-brand-yellow px-1 py-3 text-sm font-semibold"
+          >
+            Inscriptions
+          </Link>
         </nav>
       </header>
 
@@ -161,26 +197,44 @@ async function InscriptionDetail({
         </Link>
 
         {hasLoadError || !registration ? (
-          <div role="alert" className="mt-5 border border-red-700/30 bg-white px-5 py-6 text-sm text-red-800">
-            Impossible de charger cette inscription. Actualisez la page pour réessayer.
+          <div
+            role="alert"
+            className="mt-5 border border-red-700/30 bg-white px-5 py-6 text-sm text-red-800"
+          >
+            Impossible de charger cette inscription. Actualisez la page pour
+            réessayer.
           </div>
         ) : (
           <>
             <div className="mb-5 mt-3 flex flex-wrap items-center gap-x-3 gap-y-1">
-              <h1 className="text-3xl font-bold tracking-[-0.045em] sm:text-[40px]">{registration.name}</h1>
-              <span className={`inline-flex rounded px-3 py-1.5 text-xs font-medium ${statusStyles[registration.status]}`}>
+              <h1 className="text-3xl font-bold tracking-[-0.045em] sm:text-[40px]">
+                {registration.name}
+              </h1>
+              <span
+                className={`inline-flex rounded px-3 py-1.5 text-xs font-medium ${statusStyles[registration.status]}`}
+              >
                 {statusLabels[registration.status]}
               </span>
-              <p className="basis-full text-sm text-brand-muted">Inscrite le {formatDate(registration.created_at)}</p>
+              <p className="basis-full text-sm text-brand-muted">
+                Inscrite le {formatDate(registration.created_at)}
+              </p>
             </div>
 
             <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,1.45fr)_minmax(320px,0.95fr)] xl:gap-5">
               <div className="grid gap-4">
                 <section className="border border-brand-ink/15 bg-white">
-                  <h2 className="border-b border-brand-ink/10 px-4 py-4 text-sm font-bold sm:px-5">Informations de l’inscription</h2>
+                  <h2 className="border-b border-brand-ink/10 px-4 py-4 text-sm font-bold sm:px-5">
+                    Informations de l’inscription
+                  </h2>
                   <dl className="divide-y divide-brand-ink/10 px-4 sm:px-5">
-                    <DetailField label="Nom complet" value={registration.name} />
-                    <DetailField label="Situation actuelle" value={registration.situation} />
+                    <DetailField
+                      label="Nom complet"
+                      value={registration.name}
+                    />
+                    <DetailField
+                      label="Situation actuelle"
+                      value={registration.situation}
+                    />
                     <DetailField label="Téléphone" value={registration.phone} />
                     <DetailField label="E-mail" value={registration.email} />
                   </dl>
@@ -189,21 +243,51 @@ async function InscriptionDetail({
                 <section className="min-h-[240px] border border-brand-ink/15 bg-white p-4 sm:min-h-[270px] sm:p-5">
                   <h2 className="text-sm font-bold">Moyens de contact</h2>
                   <div className="mt-4 grid gap-2 sm:grid-cols-3">
-                    <a href={`tel:${registration.phone.replace(/[^\d+]/g, "")}`} className="inline-flex min-h-12 items-center gap-2 rounded-sm bg-brand-yellow px-3 py-2 text-left text-xs font-semibold transition hover:bg-brand-yellow/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink">
+                    <a
+                      href={`tel:${registration.phone.replace(/[^\d+]/g, "")}`}
+                      className="inline-flex min-h-12 items-center gap-2 rounded-sm bg-brand-yellow px-3 py-2 text-left text-xs font-semibold transition hover:bg-brand-yellow/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink"
+                    >
                       <Phone aria-hidden="true" className="size-5 shrink-0" />
-                      <span>Appeler<span className="mt-0.5 block font-normal">{registration.phone}</span></span>
+                      <span>
+                        Appeler
+                        <span className="mt-0.5 block font-normal">
+                          {registration.phone}
+                        </span>
+                      </span>
                     </a>
-                    <a href={`mailto:${registration.email}`} className="inline-flex min-h-12 items-center gap-2 rounded-sm border border-brand-ink/15 px-3 py-2 text-left text-xs font-semibold transition hover:bg-brand-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink">
+                    <a
+                      href={`mailto:${registration.email}`}
+                      className="inline-flex min-h-12 items-center gap-2 rounded-sm border border-brand-ink/15 px-3 py-2 text-left text-xs font-semibold transition hover:bg-brand-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink"
+                    >
                       <Mail aria-hidden="true" className="size-5 shrink-0" />
-                      <span className="min-w-0">E-mail<span className="mt-0.5 block truncate font-normal">{registration.email}</span></span>
+                      <span className="min-w-0">
+                        E-mail
+                        <span className="mt-0.5 block truncate font-normal">
+                          {registration.email}
+                        </span>
+                      </span>
                     </a>
-                    <a href={`https://wa.me/${getWhatsappNumber(registration.phone)}`} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center gap-2 rounded-sm border border-brand-ink/15 px-3 py-2 text-left text-xs font-semibold transition hover:bg-brand-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink">
-                      <MessageCircleMore aria-hidden="true" className="size-5 shrink-0" />
-                      <span>Ouvrir WhatsApp<span className="mt-0.5 block font-normal">{registration.phone}</span></span>
+                    <a
+                      href={`https://wa.me/${getWhatsappNumber(registration.phone)}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex min-h-12 items-center gap-2 rounded-sm border border-brand-ink/15 px-3 py-2 text-left text-xs font-semibold transition hover:bg-brand-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink"
+                    >
+                      <MessageCircleMore
+                        aria-hidden="true"
+                        className="size-5 shrink-0"
+                      />
+                      <span>
+                        Ouvrir WhatsApp
+                        <span className="mt-0.5 block font-normal">
+                          {registration.phone}
+                        </span>
+                      </span>
                     </a>
                   </div>
                   <p className="mt-4 text-[11px] leading-relaxed text-brand-muted">
-                    Ouvrir WhatsApp lance une conversation avec ce numéro. Cela ne confirme pas l’envoi d’un message.
+                    Ouvrir WhatsApp lance une conversation avec ce numéro. Cela
+                    ne confirme pas l’envoi d’un message.
                   </p>
                 </section>
               </div>
@@ -255,8 +339,14 @@ function getWhatsappNumber(value: string) {
 
 function DetailSkeleton() {
   return (
-    <main aria-busy="true" aria-label="Chargement du détail" className="min-h-svh bg-brand-soft px-5 py-8 text-brand-ink sm:px-8">
-      <span className="sr-only" role="status">Vérification de votre session et chargement de l’inscription…</span>
+    <main
+      aria-busy="true"
+      aria-label="Chargement du détail"
+      className="min-h-svh bg-brand-soft px-5 py-8 text-brand-ink sm:px-8"
+    >
+      <span className="sr-only" role="status">
+        Vérification de votre session et chargement de l’inscription…
+      </span>
       <div className="mx-auto max-w-[1440px]">
         <div className="mb-8 h-12 border-b border-brand-ink/15 bg-white" />
         <Skeleton className="h-5 w-48 rounded-sm" />

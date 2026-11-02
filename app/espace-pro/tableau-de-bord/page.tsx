@@ -3,12 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import {
-  ArrowRight,
-  Check,
-  Phone,
-  UserRoundPlus,
-} from "lucide-react";
+import { ArrowRight, Check, Phone, UserRoundPlus } from "lucide-react";
 
 import DashboardSignOut from "@/components/dashboard-sign-out";
 import RegistrationStatusSelect from "@/components/registration-status-select";
@@ -132,6 +127,9 @@ async function DashboardContent() {
         LIMIT 8`),
     ]);
 
+    // console.log("Stats result:", statsResult.rows);
+    // console.log("Registrations result:", registrationsResult.rows);
+
     const counts = statsResult.rows[0];
     stats = {
       total: Number(counts.total),
@@ -189,7 +187,10 @@ async function DashboardContent() {
           </nav>
           <div className="flex items-center gap-3 sm:gap-5">
             <div className="hidden items-center gap-2 md:flex">
-              <span aria-hidden="true" className="relative size-8 shrink-0 overflow-hidden rounded-full border border-brand-ink/15 bg-white">
+              <span
+                aria-hidden="true"
+                className="relative size-8 shrink-0 overflow-hidden rounded-full border border-brand-ink/15 bg-white"
+              >
                 <Image
                   src="/images/dashboard-owner.jpeg"
                   alt=""

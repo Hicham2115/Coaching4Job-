@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Select } from "@base-ui/react/select";
 import { ChevronDown, Search } from "lucide-react";
@@ -21,10 +22,31 @@ export default function InscriptionFilters({
   status,
 }: InscriptionFiltersProps) {
   const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState(search);
+
+  useEffect(() => {
+    if (searchTerm === search) return;
+
+    const timeout = window.setTimeout(() => {
+      const query = new URLSearchParams();
+      if (searchTerm.trim()) query.set("q", searchTerm.trim());
+      if (status) query.set("status", status);
+
+      const queryString = query.toString();
+      router.replace(
+        queryString
+          ? `/espace-pro/inscriptions?${queryString}`
+          : "/espace-pro/inscriptions",
+        { scroll: false },
+      );
+    }, 300);
+
+    return () => window.clearTimeout(timeout);
+  }, [router, search, searchTerm, status]);
 
   function updateStatus(value: string | null) {
     const query = new URLSearchParams();
-    if (search) query.set("q", search);
+    if (searchTerm.trim()) query.set("q", searchTerm.trim());
     if (value && value !== "all") query.set("status", value);
 
     const queryString = query.toString();
@@ -45,7 +67,8 @@ export default function InscriptionFilters({
         <input
           type="search"
           name="q"
-          defaultValue={search}
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
           maxLength={100}
           placeholder="Rechercher un nom, téléphone ou e-mail"
           aria-label="Rechercher un nom, téléphone ou e-mail"
