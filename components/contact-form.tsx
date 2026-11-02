@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import { useForm } from "@tanstack/react-form";
-import { ArrowRight, Check, ChevronDown } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, LoaderCircle } from "lucide-react";
 import { Select } from "@base-ui/react/select";
+import { toast } from "sonner";
 import { z } from "zod";
+
+import { createRegistration } from "@/app/actions/registrations";
 
 const inputClassName =
   "mt-2 min-h-12 w-full border border-brand-ink/20 bg-brand-soft/45 px-4 text-base text-brand-ink outline-none transition placeholder:text-brand-muted/55 hover:border-brand-ink/40 focus:border-brand-ink focus:bg-white focus:ring-2 focus:ring-brand-yellow/70";
@@ -31,6 +34,8 @@ type ContactValues = z.input<typeof contactSchema>;
 
 export default function ContactForm() {
   const [sent, setSent] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [whatsappUrl, setWhatsappUrl] = useState<string | null>(null);
 
   const form = useForm({
     defaultValues: {
@@ -40,18 +45,51 @@ export default function ContactForm() {
       email: "",
     } as ContactValues,
     validators: { onSubmit: contactSchema },
-    onSubmit: ({ value }) => {
+    onSubmit: async ({ value }) => {
       const parsed = contactSchema.safeParse(value);
       if (!parsed.success) return;
 
-      const { name, status, phone, email } = parsed.data;
-      const text = `Bonjour Coaching 4 Job,\n\nNom : ${name}\nSituation actuelle : ${status}\nTéléphone : ${phone}\nE-mail : ${email}`;
-      window.open(
-        `https://wa.me/212661138432?text=${encodeURIComponent(text)}`,
-        "_blank",
-        "noopener,noreferrer",
-      );
-      setSent(true);
+      if (isSaving) return;
+      setIsSaving(true);
+      setSent(false);
+      setWhatsappUrl(null);
+
+      const whatsappTab = window.open("about:blank", "_blank");
+      if (whatsappTab) whatsappTab.opener = null;
+
+      try {
+        const result = await createRegistration({
+          name: parsed.data.name,
+          situation: parsed.data.status,
+          phone: parsed.data.phone,
+          email: parsed.data.email,
+        });
+
+        if (!result.success) {
+          whatsappTab?.close();
+          toast.error(result.message);
+          return;
+        }
+
+        const { name, status, phone, email } = parsed.data;
+        const text = `Bonjour Coaching 4 Job,\n\nNom : ${name}\nSituation actuelle : ${status}\nTéléphone : ${phone}\nE-mail : ${email}`;
+        const nextWhatsappUrl = `https://wa.me/212661138432?text=${encodeURIComponent(text)}`;
+
+        setSent(true);
+        form.reset();
+        toast.success("Votre inscription a été enregistrée.");
+
+        if (whatsappTab) {
+          whatsappTab.location.href = nextWhatsappUrl;
+        } else {
+          setWhatsappUrl(nextWhatsappUrl);
+        }
+      } catch {
+        whatsappTab?.close();
+        toast.error("Impossible d’enregistrer votre inscription. Réessayez.");
+      } finally {
+        setIsSaving(false);
+      }
     },
   });
 
@@ -109,9 +147,11 @@ export default function ContactForm() {
                       className={inputClassName}
                       name={field.name}
                       onBlur={field.handleBlur}
-                      onChange={(event) =>
-                        field.handleChange(event.target.value)
-                      }
+                      onChange={(event) => {
+                        field.handleChange(event.target.value);
+                        setSent(false);
+                        setWhatsappUrl(null);
+                      }}
                       placeholder="Ex. Salma El Amrani"
                       value={field.state.value}
                     />
@@ -142,7 +182,11 @@ export default function ContactForm() {
                   <div className="text-sm font-semibold text-brand-ink">
                     <Select.Root
                       name={field.name}
-                      onValueChange={(value) => field.handleChange(value ?? "")}
+                      onValueChange={(value) => {
+                        field.handleChange(value ?? "");
+                        setSent(false);
+                        setWhatsappUrl(null);
+                      }}
                       value={field.state.value}
                     >
                       <Select.Label className="block">
@@ -214,9 +258,11 @@ export default function ContactForm() {
                       className={inputClassName}
                       name={field.name}
                       onBlur={field.handleBlur}
-                      onChange={(event) =>
-                        field.handleChange(event.target.value)
-                      }
+                      onChange={(event) => {
+                        field.handleChange(event.target.value);
+                        setSent(false);
+                        setWhatsappUrl(null);
+                      }}
                       placeholder="+212 6 12 34 56 78"
                       type="tel"
                       value={field.state.value}
@@ -246,9 +292,11 @@ export default function ContactForm() {
                       className={inputClassName}
                       name={field.name}
                       onBlur={field.handleBlur}
-                      onChange={(event) =>
-                        field.handleChange(event.target.value)
-                      }
+                      onChange={(event) => {
+                        field.handleChange(event.target.value);
+                        setSent(false);
+                        setWhatsappUrl(null);
+                      }}
                       placeholder="vous@exemple.com"
                       type="email"
                       value={field.state.value}
@@ -266,18 +314,44 @@ export default function ContactForm() {
               }}
             </form.Field>
           </div>
-          <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p aria-live="polite" className="text-sm text-brand-muted">
+          <div className="mt-6 grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-6">
+            <p aria-live="polite" className="min-w-0 text-sm leading-relaxed text-brand-muted">
               {sent
-                ? "WhatsApp s’ouvre avec vos informations prêtes à envoyer."
+                ? "Votre inscription est enregistrée. WhatsApp peut maintenant s’ouvrir pour vous."
                 : "Vos informations serviront à réserver votre place à la conférence en ligne."}
+              {whatsappUrl && (
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="ml-1 font-semibold text-brand-ink underline underline-offset-4"
+                >
+                  Ouvrir WhatsApp
+                </a>
+              )}
             </p>
             <button
-              className="inline-flex min-h-13 shrink-0 items-center gap-4 bg-brand-yellow px-6 text-sm font-semibold text-brand-ink transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink sm:text-base"
+              className="group inline-flex min-h-12 w-full items-center justify-center gap-3 bg-brand-yellow px-4 text-sm font-semibold text-brand-ink transition-colors duration-200 hover:bg-brand-ink hover:text-white motion-reduce:transition-none cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink disabled:cursor-wait disabled:hover:bg-brand-yellow disabled:hover:text-brand-ink disabled:opacity-70 sm:w-auto sm:px-5"
+              disabled={isSaving}
               type="submit"
             >
-              Envoyer mes informations sur WhatsApp
-              <ArrowRight aria-hidden="true" className="size-4" />
+              {isSaving ? (
+                <>
+                  <LoaderCircle
+                    aria-hidden="true"
+                    className="size-4 animate-spin"
+                  />
+                  Enregistrement…
+                </>
+              ) : (
+                <>
+                  Continuer sur WhatsApp
+                  <ArrowRight
+                    aria-hidden="true"
+                    className="size-4 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none"
+                  />
+                </>
+              )}
             </button>
           </div>
         </form>

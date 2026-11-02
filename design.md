@@ -16,9 +16,9 @@ Use this guide for the public site and the owner dashboard. The public site in `
 
 - **Purpose:** help one owner see new conference leads, find a person, and record follow-up progress quickly.
 - **Primary screens:** sign in; overview with latest leads and follow-up priorities; searchable lead list; lead detail with contact actions, status, and notes. Keep a small account/sign-out menu in the shell rather than inventing a settings page before one is needed.
-- **Navigation:** simple persistent desktop sidebar or top rail with logo and the two main destinations: Vue d’ensemble and Prospects. On mobile, use a compact header and an accessible menu. A lead detail returns clearly to the list.
+- **Navigation:** simple persistent desktop sidebar or top rail with logo and the two main destinations: Vue d’ensemble and Inscriptions. On mobile, use a compact header and an accessible menu. An inscription detail returns clearly to the list.
 - **Overview hierarchy:** lead count and new/follow-up counts as quiet summaries, then the recent leads list as the main content. Prioritize the newest uncontacted lead over decorative analytics.
-- **Lead list:** show name, situation, submitted date, status, and a clear detail action. Search and status filter sit above the list. Use row dividers rather than a card per lead.
+- **Inscriptions list:** show name, contact details, situation, submitted date, status, and a clear detail action. Search and status filter sit above the list. Use row dividers rather than a card per inscription.
 - **Lead detail:** make phone, email, and WhatsApp actions easy to find; show submitted information, current status, and a simple notes history. Distinguish “saved lead” from “WhatsApp message sent,” which the website cannot verify by merely opening WhatsApp.
 - **States:** design loading, empty, error, and confirmation states using the same type and color system. Never show real personal data in mockups; use clearly fictional example leads.
 - **Responsive:** desktop reference is about 1440 × 1024; mobile reference is about 390 × 844. Keep key actions visible, let tables become readable stacked rows on phones, and avoid horizontal scrolling for essential fields.
