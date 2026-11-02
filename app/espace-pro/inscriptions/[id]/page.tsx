@@ -9,28 +9,11 @@ import DashboardSignOut from "@/components/dashboard-sign-out";
 import RegistrationFollowUp from "@/components/registration-follow-up";
 import { Skeleton } from "@/components/ui/skeleton";
 import { auth } from "@/lib/auth";
-import { databasePool } from "@/lib/database";
+import { getRegistrationDetail, type Registration, type RegistrationNote } from "@/lib/registration-data";
 
 export const metadata = {
   title: "Détail de l’inscription | Espace Pro Coaching 4 Job",
   robots: { index: false, follow: false },
-};
-
-type Registration = {
-  id: string;
-  name: string;
-  phone: string;
-  email: string;
-  situation: string;
-  status: "new" | "to_contact" | "contacted";
-  created_at: Date;
-};
-
-type Note = {
-  id: string;
-  content: string;
-  created_at: Date;
-  author_name: string;
 };
 
 const statusLabels = {
@@ -78,30 +61,13 @@ async function InscriptionDetail({
   }
 
   let registration: Registration | undefined;
-  let notes: Note[] = [];
+  let notes: RegistrationNote[] = [];
   let hasLoadError = false;
 
   try {
-    const [registrationResult, notesResult] = await Promise.all([
-      databasePool.query<Registration>(
-        `SELECT id, name, phone, email, situation, status, created_at
-         FROM registrations
-         WHERE id = $1
-         LIMIT 1`,
-        [id],
-      ),
-      databasePool.query<Note>(
-        `SELECT notes.id, notes.content, notes.created_at,
-                owner.name AS author_name
-         FROM registration_notes AS notes
-         JOIN "user" AS owner ON owner.id = notes.author_id
-         WHERE notes.registration_id = $1
-         ORDER BY notes.created_at DESC`,
-        [id],
-      ),
-    ]);
-    registration = registrationResult.rows[0];
-    notes = notesResult.rows;
+    const data = await getRegistrationDetail(id);
+    registration = data.registration;
+    notes = data.notes;
   } catch (error) {
     console.error("Unable to load registration details:", error);
     hasLoadError = true;

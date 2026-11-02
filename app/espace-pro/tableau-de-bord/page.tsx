@@ -8,27 +8,12 @@ import { ArrowRight, Check, Phone, UserRoundPlus } from "lucide-react";
 import DashboardSignOut from "@/components/dashboard-sign-out";
 import RegistrationStatusSelect from "@/components/registration-status-select";
 import { Skeleton } from "@/components/ui/skeleton";
-import { databasePool } from "@/lib/database";
 import { auth } from "@/lib/auth";
+import { getDashboardData, type DashboardStats } from "@/lib/registration-data";
 
 export const metadata = {
   title: "Vue d’ensemble | Espace Pro Coaching 4 Job",
   robots: { index: false, follow: false },
-};
-
-type Registration = {
-  id: string;
-  name: string;
-  situation: string;
-  status: "new" | "to_contact" | "contacted";
-  created_at: Date;
-};
-
-type DashboardStats = {
-  total: number;
-  new: number;
-  toContact: number;
-  contacted: number;
 };
 
 export default function DashboardPage() {
@@ -105,36 +90,13 @@ async function DashboardContent() {
   }
 
   let stats: DashboardStats | null = null;
-  let registrations: Registration[] = [];
+  let registrations: Awaited<ReturnType<typeof getDashboardData>>["registrations"] = [];
   let hasLoadError = false;
 
   try {
-    const [statsResult, registrationsResult] = await Promise.all([
-      databasePool.query<{
-        total: string;
-        new_count: string;
-        to_contact_count: string;
-        contacted_count: string;
-      }>(`SELECT
-          COUNT(*)::text AS total,
-          COUNT(*) FILTER (WHERE status = 'new')::text AS new_count,
-          COUNT(*) FILTER (WHERE status = 'to_contact')::text AS to_contact_count,
-          COUNT(*) FILTER (WHERE status = 'contacted')::text AS contacted_count
-        FROM registrations`),
-      databasePool.query<Registration>(`SELECT id, name, situation, status, created_at
-        FROM registrations
-        ORDER BY created_at DESC
-        LIMIT 8`),
-    ]);
-
-    const counts = statsResult.rows[0];
-    stats = {
-      total: Number(counts.total),
-      new: Number(counts.new_count),
-      toContact: Number(counts.to_contact_count),
-      contacted: Number(counts.contacted_count),
-    };
-    registrations = registrationsResult.rows;
+    const data = await getDashboardData();
+    stats = data.stats;
+    registrations = data.registrations;
   } catch (error) {
     console.error("Unable to load dashboard:", error);
     hasLoadError = true;

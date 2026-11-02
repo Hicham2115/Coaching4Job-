@@ -149,18 +149,24 @@
   font-size: 14px;
 }
 
-.cn-toast [data-title] {
+.cn-toast [data-title],
+.cn-toast .cn-toast-title {
   font-weight: 650;
   line-height: 1.35;
-  white-space: nowrap;
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
 }
 
-.cn-toast [data-description] {
+.cn-toast [data-description],
+.cn-toast .cn-toast-description {
   margin-top: 2px;
   color: #4a4a4a;
   font-size: 13px;
   line-height: 1.4;
-  white-space: nowrap;
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
 }
 
 .cn-toast[data-type="success"] [data-icon] {

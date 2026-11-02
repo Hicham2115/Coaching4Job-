@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 import { headers } from "next/headers";
 import { z } from "zod";
 
@@ -68,6 +68,7 @@ async function saveRegistrationStatus(
       return { kind: "error", message: "Cette inscription est introuvable." };
     }
 
+    updateTag("registrations");
     revalidatePath(`/espace-pro/inscriptions/${id.data}`);
     revalidatePath("/espace-pro/inscriptions");
     revalidatePath("/espace-pro/tableau-de-bord");
@@ -107,6 +108,7 @@ export async function addRegistrationNote(
       return { kind: "error", message: "Cette inscription est introuvable." };
     }
 
+    updateTag("registrations");
     revalidatePath(`/espace-pro/inscriptions/${id.data}`);
     return { kind: "success", message: "La note a été ajoutée." };
   } catch (error) {

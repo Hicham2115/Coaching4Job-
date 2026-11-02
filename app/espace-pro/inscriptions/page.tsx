@@ -18,21 +18,11 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { auth } from "@/lib/auth";
-import { databasePool } from "@/lib/database";
+import { getRegistrationList, type Registration } from "@/lib/registration-data";
 
 export const metadata = {
   title: "Inscriptions | Espace Pro Coaching 4 Job",
   robots: { index: false, follow: false },
-};
-
-type Registration = {
-  id: string;
-  name: string;
-  phone: string;
-  email: string;
-  situation: string;
-  status: "new" | "to_contact" | "contacted";
-  created_at: Date;
 };
 
 type SearchParams = Promise<{
@@ -80,24 +70,6 @@ async function InscriptionsContent({
   const parsedPage = Number.parseInt(rawPage ?? "1", 10);
   const requestedPage = Number.isSafeInteger(parsedPage) && parsedPage > 0 ? parsedPage : 1;
 
-  const where: string[] = [];
-  const values: Array<string> = [];
-
-  if (status) {
-    values.push(status);
-    where.push(`status = $${values.length}`);
-  }
-
-  if (search) {
-    values.push(`%${search}%`);
-    const searchParameter = `$${values.length}`;
-    where.push(
-      `(name ILIKE ${searchParameter} OR phone ILIKE ${searchParameter} OR email ILIKE ${searchParameter})`,
-    );
-  }
-
-  const whereSql = where.length ? `WHERE ${where.join(" AND ")}` : "";
-
   let total = 0;
   let registrations: Registration[] = [];
   let hasLoadError = false;
@@ -105,24 +77,8 @@ async function InscriptionsContent({
   let currentPage = 1;
 
   try {
-    const countResult = await databasePool.query<{ total: string }>(
-      `SELECT COUNT(*)::text AS total FROM registrations ${whereSql}`,
-      values,
-    );
-    total = Number(countResult.rows[0]?.total ?? 0);
-    totalPages = Math.max(1, Math.ceil(total / pageSize));
-    currentPage = Math.min(requestedPage, totalPages);
-
-    const dataValues = [...values, pageSize, (currentPage - 1) * pageSize];
-    const dataResult = await databasePool.query<Registration>(
-      `SELECT id, name, phone, email, situation, status, created_at
-       FROM registrations
-       ${whereSql}
-       ORDER BY created_at DESC
-       LIMIT $${values.length + 1} OFFSET $${values.length + 2}`,
-      dataValues,
-    );
-    registrations = dataResult.rows;
+    const data = await getRegistrationList({ search, status, requestedPage });
+    ({ total, registrations, totalPages, currentPage } = data);
   } catch (error) {
     console.error("Unable to load registrations:", error);
     hasLoadError = true;

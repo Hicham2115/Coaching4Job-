@@ -3,6 +3,7 @@
 import { createHmac } from "node:crypto";
 import { isIP } from "node:net";
 import { headers } from "next/headers";
+import { updateTag } from "next/cache";
 import { z } from "zod";
 
 import { databasePool } from "@/lib/database";
@@ -88,6 +89,8 @@ export async function createRegistration(input: unknown) {
         parsed.data.email,
       ],
     );
+
+    updateTag("registrations");
 
     return { success: true as const };
   } catch (error) {
