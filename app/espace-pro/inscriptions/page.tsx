@@ -7,6 +7,7 @@ import { connection } from "next/server";
 import { ArrowRight } from "lucide-react";
 
 import DashboardSignOut from "@/components/dashboard-sign-out";
+import DataLoadError from "@/components/data-load-error";
 import InscriptionFilters from "@/components/inscription-filters";
 import RegistrationStatusSelect from "@/components/registration-status-select";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -167,9 +168,7 @@ async function InscriptionsContent({
         </div>
 
         {hasLoadError ? (
-          <div role="alert" className="border border-red-700/30 bg-white px-5 py-6 text-sm text-red-800">
-            Impossible de charger les inscriptions. Actualisez la page pour réessayer.
-          </div>
+          <DataLoadError message="La liste des inscriptions est momentanément indisponible." />
         ) : registrations.length === 0 ? (
           <div className="border border-brand-ink/15 bg-white px-5 py-12 text-center">
             <p className="font-semibold">Aucune inscription trouvée</p>

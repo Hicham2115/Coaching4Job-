@@ -7,6 +7,7 @@ import { connection } from "next/server";
 import { ArrowRight, Check, Phone, UserRoundPlus } from "lucide-react";
 
 import DashboardSignOut from "@/components/dashboard-sign-out";
+import DataLoadError from "@/components/data-load-error";
 import RegistrationStatusSelect from "@/components/registration-status-select";
 import { Skeleton } from "@/components/ui/skeleton";
 import { auth } from "@/lib/auth";
@@ -206,13 +207,9 @@ async function DashboardContent() {
         </div>
 
         {hasLoadError || !stats ? (
-          <section
-            role="alert"
-            className="mb-5 border border-red-700/30 bg-white px-5 py-4 text-sm text-red-800"
-          >
-            Impossible de charger les inscriptions pour le moment. Actualisez la
-            page pour réessayer.
-          </section>
+          <div className="mb-5">
+            <DataLoadError message="Le résumé des inscriptions est momentanément indisponible." />
+          </div>
         ) : (
           <section
             aria-label="Résumé des inscriptions"

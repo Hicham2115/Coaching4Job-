@@ -39,9 +39,9 @@ export type RegistrationNote = {
 
 export async function getDashboardData() {
   "use cache";
+  
   cacheLife({ stale: 30, revalidate: 30, expire: 60 });
   cacheTag(registrationsTag);
-
   const [statsResult, registrationsResult] = await Promise.all([
     databasePool.query<{
       total: string;

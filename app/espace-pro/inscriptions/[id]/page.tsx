@@ -7,6 +7,7 @@ import { connection } from "next/server";
 import { ArrowLeft, Mail, MessageCircleMore, Phone } from "lucide-react";
 
 import DashboardSignOut from "@/components/dashboard-sign-out";
+import DataLoadError from "@/components/data-load-error";
 import RegistrationFollowUp from "@/components/registration-follow-up";
 import { Skeleton } from "@/components/ui/skeleton";
 import { auth } from "@/lib/auth";
@@ -166,12 +167,8 @@ async function InscriptionDetail({
         </Link>
 
         {hasLoadError || !registration ? (
-          <div
-            role="alert"
-            className="mt-5 border border-red-700/30 bg-white px-5 py-6 text-sm text-red-800"
-          >
-            Impossible de charger cette inscription. Actualisez la page pour
-            réessayer.
+          <div className="mt-5">
+            <DataLoadError message="Les détails de cette inscription sont momentanément indisponibles." />
           </div>
         ) : (
           <>
