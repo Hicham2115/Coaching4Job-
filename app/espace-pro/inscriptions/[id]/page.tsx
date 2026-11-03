@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { headers } from "next/headers";
 import { notFound, redirect } from "next/navigation";
+import { connection } from "next/server";
 import { ArrowLeft, Mail, MessageCircleMore, Phone } from "lucide-react";
 
 import DashboardSignOut from "@/components/dashboard-sign-out";
@@ -43,6 +44,7 @@ async function InscriptionDetail({
 }: {
   params: Promise<{ id: string }>;
 }) {
+  await connection();
   const [session, { id }] = await Promise.all([
     auth.api.getSession({ headers: await headers() }),
     params,

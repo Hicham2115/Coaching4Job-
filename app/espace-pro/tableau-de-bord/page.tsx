@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { connection } from "next/server";
 import { ArrowRight, Check, Phone, UserRoundPlus } from "lucide-react";
 
 import DashboardSignOut from "@/components/dashboard-sign-out";
@@ -83,6 +84,7 @@ export default function DashboardPage() {
 }
 
 async function DashboardContent() {
+  await connection();
   const session = await auth.api.getSession({ headers: await headers() });
 
   if (!session || session.user.email !== "admin@coaching4job.ma") {

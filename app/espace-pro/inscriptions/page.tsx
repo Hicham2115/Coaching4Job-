@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { connection } from "next/server";
 import { ArrowRight } from "lucide-react";
 
 import DashboardSignOut from "@/components/dashboard-sign-out";
@@ -51,6 +52,7 @@ async function InscriptionsContent({
 }: {
   searchParams: SearchParams;
 }) {
+  await connection();
   const [session, params] = await Promise.all([
     auth.api.getSession({ headers: await headers() }),
     searchParams,
