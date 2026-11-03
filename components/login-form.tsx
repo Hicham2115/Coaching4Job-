@@ -12,7 +12,6 @@ import {
   Mail,
 } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -28,7 +27,6 @@ const inputClass =
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const router = useRouter();
   const form = useForm({
     defaultValues: { email: "", password: "" },
     validators: { onSubmit: schema },
@@ -44,11 +42,7 @@ export default function LoginForm() {
           return;
         }
 
-        toast.success(
-          "Connexion réussie. Ouverture de votre tableau de bord…",
-        );
-        router.replace("/espace-pro/tableau-de-bord");
-        router.refresh();
+        window.location.replace("/espace-pro/tableau-de-bord");
       } catch {
         toast.error("Connexion impossible pour le moment. Réessayez plus tard.");
       }
