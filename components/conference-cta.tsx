@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function ConferenceCta() {
   return (
-    <section className="scroll-reveal bg-white py-2 sm:py-3">
+    <section className="scroll-reveal bg-white pb-0 pt-2 sm:pt-3">
       <div className="relative mx-auto flex min-h-[430px] max-w-none items-center overflow-hidden border-y border-brand-ink bg-brand-soft px-7 py-12 sm:min-h-[540px] sm:px-12 lg:min-h-[calc(100svh-10rem)] lg:px-[7.2vw]">
         <Image
           alt="La mosquée Hassan II et le littoral de Casablanca"
@@ -13,15 +13,15 @@ export default function ConferenceCta() {
           sizes="100vw"
           src="/images/casablanca-method.jpg"
         />
-        <div
+        {/* <div
           aria-hidden="true"
           className="absolute inset-0 bg-[linear-gradient(180deg,rgba(248,247,241,0.84)_0%,rgba(248,247,241,0.72)_58%,rgba(248,247,241,0.28)_100%)] md:bg-[linear-gradient(90deg,rgba(248,247,241,0.92)_0%,rgba(248,247,241,0.78)_27%,rgba(248,247,241,0.42)_48%,rgba(248,247,241,0.08)_68%,transparent_82%)]"
-        />
+        /> */}
         {/* <div
             aria-hidden="true"
             className="absolute -bottom-40 -left-36 size-72 rounded-full border-[48px] border-brand-yellow/90 sm:-bottom-56 sm:-left-48 sm:size-[480px] sm:border-[68px]"
           /> */}
-        <div className="relative z-10 max-w-[680px]">
+        <div className="relative z-10 ml-8 max-w-[680px] sm:ml-12 lg:ml-[8.5vw]">
           <p className="mb-7 flex items-center gap-5 text-sm font-medium uppercase tracking-[0.12em] text-brand-ink sm:text-base">
             Coaching 4 Job{" "}
             <span

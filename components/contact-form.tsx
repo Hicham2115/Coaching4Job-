@@ -3,7 +3,13 @@
 import { useRef, useState } from "react";
 import { useForm } from "@tanstack/react-form";
 import { Dialog } from "@base-ui/react/dialog";
-import { ArrowRight, Check, CheckCircle2, ChevronDown, LoaderCircle } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  CheckCircle2,
+  ChevronDown,
+  LoaderCircle,
+} from "lucide-react";
 import { Select } from "@base-ui/react/select";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -307,7 +313,8 @@ export default function ContactForm() {
           </div>
           <div className="mt-6 grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-6">
             <p className="min-w-0 text-sm leading-relaxed text-brand-muted">
-              Vos informations serviront à réserver votre place à la conférence en ligne.
+              Vos informations serviront à réserver votre place à la conférence
+              en ligne.
             </p>
             <button
               className="group inline-flex min-h-12 w-full items-center justify-center gap-3 bg-brand-yellow px-4 text-sm font-semibold text-brand-ink transition-colors duration-200 hover:bg-brand-ink hover:text-white motion-reduce:transition-none cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink disabled:cursor-wait disabled:hover:bg-brand-yellow disabled:hover:text-brand-ink disabled:opacity-70 sm:w-auto sm:px-5"
@@ -346,7 +353,8 @@ export default function ContactForm() {
                 Merci pour votre inscription !
               </Dialog.Title>
               <Dialog.Description className="mt-2 text-sm leading-6 text-brand-muted">
-                Votre demande a bien été enregistrée. Notre équipe vous contactera prochainement.
+                Votre demande a bien été enregistrée. Notre équipe vous
+                contactera prochainement.
               </Dialog.Description>
               <Dialog.Close className="mt-6 inline-flex min-h-11 w-full cursor-pointer items-center justify-center bg-brand-yellow px-5 text-sm font-semibold text-brand-ink transition-colors hover:bg-brand-ink hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink sm:w-auto">
                 Fermer
