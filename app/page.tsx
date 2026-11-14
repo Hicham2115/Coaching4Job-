@@ -1,5 +1,6 @@
 import Component from "@/components/comp-577";
 import Hero from "@/components/hero";
+import Webinar from "@/components/webinar";
 import Accompaniments from "@/components/accompaniments";
 import Method from "@/components/method";
 import Approach from "@/components/approach";
@@ -54,6 +55,8 @@ export default function Home() {
       <ScrollReveal />
       <Hero />
       <Accompaniments />
+            <Webinar />
+
       <Method />
       <Approach />
       {/* <ConferenceCta /> */}
