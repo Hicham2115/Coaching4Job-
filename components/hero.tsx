@@ -34,20 +34,20 @@ export default function Hero() {
         className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-ink/90 via-brand-ink/50 to-transparent max-lg:bg-none max-lg:bg-brand-ink/60"
       />
 
-      <section className="mx-auto w-full max-w-[1510px] px-4 py-16 sm:px-6 lg:px-[3.2%] lg:py-20">
-        <p className="hero-enter hero-enter-1 mb-7 flex items-center gap-4 text-[11px] font-semibold uppercase tracking-[0.15em] text-white/80 lg:mb-8">
-          <span aria-hidden="true" className="h-[2px] w-12 bg-brand-yellow lg:w-16" />
+      <section className="mx-auto w-full max-w-[1510px] px-5 py-14 sm:px-6 lg:px-[3.2%] lg:py-20">
+        <p className="mb-5 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.14em] sm:text-[11px] sm:gap-4 text-white/80 lg:mb-8">
+          <span aria-hidden="true" className="h-[2px] w-8 shrink-0 bg-brand-yellow sm:w-12 lg:w-16" />
           Coaching carrière à Casablanca
         </p>
-        <h1 className="hero-enter hero-enter-2 max-w-[760px] text-balance text-[clamp(2.8rem,5vw,5.2rem)] font-extrabold leading-[1.04] tracking-[-0.05em] text-white">
+        <h1 className="max-w-[760px] text-balance text-[2.1rem] font-extrabold leading-[1.1] tracking-[-0.04em] sm:text-5xl lg:text-[clamp(3rem,5vw,5.2rem)] lg:leading-[1.04] lg:tracking-[-0.05em] text-white">
           Le bon emploi, le plus vite possible<span className="text-brand-yellow">.</span>
         </h1>
-        <p className="hero-enter hero-enter-3 mt-7 max-w-[620px] text-base leading-7 text-white/85 sm:text-[17px] lg:mt-8 lg:text-[19px] lg:leading-8">
+        <p className="mt-5 max-w-[620px] text-[15px] leading-[1.65] text-white/90 sm:text-[17px] lg:mt-8 lg:text-[19px] lg:leading-8">
           Nous vous aidons à avancer rapidement vers le bon emploi. Remplissez le formulaire pour réserver votre place à notre conférence en ligne sur le coaching carrière.
         </p>
         <Link
           href="#contact"
-          className="hero-enter hero-enter-4 mt-8 inline-flex min-h-14 w-fit max-w-full items-center justify-center gap-7 whitespace-nowrap rounded-full bg-brand-yellow pl-7 pr-6 text-base font-bold text-brand-ink transition-transform hover:-translate-y-0.5 lg:mt-10 lg:min-h-[64px] lg:pl-9 lg:pr-7 lg:text-[17px]"
+          className="mt-7 inline-flex min-h-12 w-full items-center justify-between gap-7 sm:min-h-14 sm:w-fit sm:justify-center whitespace-nowrap rounded-full bg-brand-yellow pl-7 pr-6 text-base font-bold text-brand-ink transition-transform hover:-translate-y-0.5 lg:mt-10 lg:min-h-[64px] lg:pl-9 lg:pr-7 lg:text-[17px]"
         >
           Réserver ma place
           <ArrowRight aria-hidden="true" className="size-4" />

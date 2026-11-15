@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function ConferenceCta() {
   return (
-    <section className="scroll-reveal bg-white pb-0 pt-2 sm:pt-3">
+    <section className="bg-white pb-0 pt-2 sm:pt-3">
       <div className="relative mx-auto flex min-h-[430px] max-w-none items-center overflow-hidden border-y border-brand-ink bg-brand-soft px-7 py-12 sm:min-h-[540px] sm:px-12 lg:min-h-[calc(100svh-10rem)] lg:px-[7.2vw]">
         <Image
           alt="La mosquée Hassan II et le littoral de Casablanca"

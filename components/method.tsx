@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Method() {
   return (
-  <section id="methode" className="scroll-reveal scroll-mt-10 bg-white">
+  <section id="methode" className="scroll-mt-10 bg-white">
     <div className="mx-auto max-w-[1360px] px-6 sm:px-10 lg:px-16">
       <div className="grid gap-0 py-12 sm:py-16 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-6 lg:py-14">
         <div className="relative z-10 order-2 -mt-10 mx-3 border border-brand-ink/10 bg-white/95 p-6 shadow-[0_14px_36px_rgba(17,17,17,0.08)] backdrop-blur-sm sm:mx-0 sm:p-8 lg:order-1 lg:mt-0 lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none lg:pr-2">

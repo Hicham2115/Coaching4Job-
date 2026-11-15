@@ -8,7 +8,6 @@ import AboutOwner from "@/components/about-owner";
 import ConferenceCta from "@/components/conference-cta";
 import SiteFooter from "@/layout/site-footer";
 import ContactForm from "@/components/contact-form";
-import ScrollReveal from "@/components/scroll-reveal";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
 
 const jsonLd = {
@@ -52,7 +51,6 @@ export default function Home() {
         }}
       />
       <Component />
-      <ScrollReveal />
       <Hero />
       <Accompaniments />
             <Webinar />

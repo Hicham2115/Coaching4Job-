@@ -11,7 +11,7 @@ export default function AboutOwner() {
   return (
     <section
       id="qui-suis-je"
-      className="scroll-reveal scroll-mt-10 bg-white py-9 text-brand-ink sm:py-18 lg:py-20"
+      className="scroll-mt-10 bg-white py-9 text-brand-ink sm:py-18 lg:py-20"
     >
       <div className="mx-auto grid max-w-[1800px] gap-0 px-4 sm:px-8 lg:grid-cols-[0.82fr_1.18fr] lg:px-8">
         <div className="relative min-h-[380px] overflow-hidden border border-brand-ink bg-brand-ink sm:min-h-[560px] lg:min-h-[680px]">

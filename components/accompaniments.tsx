@@ -7,7 +7,7 @@ export default function Accompaniments() {
   return (
   <section
     id="accompagnements"
-    className="scroll-reveal scroll-mt-10 bg-white pb-16 sm:pb-20 lg:pb-24"
+    className="scroll-mt-10 bg-white pb-16 sm:pb-20 lg:pb-24"
   >
     <div className="mx-auto max-w-[1360px] px-6 sm:px-10 lg:px-16">
       <div className="border-t-2 border-brand-ink/65 pt-12 sm:pt-14">

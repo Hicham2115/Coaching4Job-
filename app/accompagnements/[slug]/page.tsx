@@ -6,7 +6,6 @@ import { notFound } from "next/navigation";
 import { ArrowRight, Check } from "lucide-react";
 import Navbar from "@/components/comp-577";
 import SiteFooter from "@/layout/site-footer";
-import ScrollReveal from "@/components/scroll-reveal";
 import { accompaniments, getAccompaniment } from "@/lib/accompaniments";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -33,7 +32,6 @@ export default function AccompanimentPage({ params }: Props) {
       <Suspense fallback={<main className="min-h-svh bg-white" />}>
         <AccompanimentContent params={params} />
       </Suspense>
-      <ScrollReveal />
       <SiteFooter />
     </>
   );

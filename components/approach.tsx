@@ -5,7 +5,7 @@ export default function Approach() {
   return (
   <section
     id="a-propos"
-    className="scroll-reveal scroll-mt-10 bg-white py-9 text-brand-ink sm:py-18 lg:py-20"
+    className="scroll-mt-10 bg-white py-9 text-brand-ink sm:py-18 lg:py-20"
   >
     <div className="mx-auto grid max-w-[1480px] gap-0 px-4 sm:px-10 lg:grid-cols-[0.82fr_1.18fr] lg:px-16">
       <div
