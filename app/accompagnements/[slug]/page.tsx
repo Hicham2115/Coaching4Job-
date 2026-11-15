@@ -44,25 +44,25 @@ async function AccompanimentContent({ params }: Props) {
 
   return (
       <main className="bg-white text-brand-ink">
-        <section className="mx-auto grid max-w-[1360px] gap-10 px-6 py-14 sm:px-10 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-16 lg:py-20">
+        <section className="mx-auto grid max-w-[1360px] gap-10 px-5 py-10 sm:px-10 sm:py-14 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-12 lg:py-20 xl:gap-16 xl:px-16">
           <div>
-            <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-muted">
+            <p className="mb-6 flex items-center gap-3 whitespace-nowrap text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-muted">
               <span
                 aria-hidden="true"
-                className="h-[2px] w-12 bg-brand-ink/55"
+                className="h-[2px] w-8 shrink-0 bg-brand-ink/55 sm:w-12"
               />
               Notre accompagnement
             </p>
-            <h1 className="text-balance text-[clamp(2.4rem,5vw,4.2rem)] font-extrabold leading-[1.05] tracking-[-0.05em]">
+            <h1 className="whitespace-nowrap text-[clamp(1.9rem,8.5vw,2.8rem)] font-extrabold leading-[1.05] tracking-[-0.05em] sm:text-5xl lg:text-[clamp(2.6rem,4.2vw,4.2rem)]">
               {item.title}
               <span className="text-brand-yellow">.</span>
             </h1>
-            <p className="mt-6 max-w-[560px] text-lg leading-8 text-brand-muted">
+            <p className="mt-5 max-w-[560px] text-pretty text-base leading-7 text-brand-muted sm:mt-6 sm:text-lg sm:leading-8">
               {item.audience}
             </p>
             <Link
               href="/#contact"
-              className="mt-8 inline-flex min-h-14 items-center gap-7 rounded-full bg-brand-yellow pl-7 pr-6 text-base font-bold text-brand-ink transition-transform hover:-translate-y-0.5"
+              className="mt-8 inline-flex min-h-14 w-full items-center justify-between gap-7 whitespace-nowrap rounded-full bg-brand-yellow pl-7 pr-6 text-base font-bold sm:w-auto sm:justify-center text-brand-ink transition-transform hover:-translate-y-0.5"
             >
               Réserver ma place
               <ArrowRight aria-hidden="true" className="size-4" />
@@ -81,8 +81,8 @@ async function AccompanimentContent({ params }: Props) {
         </section>
 
         <section className="border-t-2 border-brand-ink/65">
-          <div className="mx-auto max-w-[1360px] px-6 py-14 sm:px-10 lg:px-16 lg:py-20">
-            <h2 className="max-w-[700px] text-[clamp(1.8rem,3vw,2.7rem)] font-bold leading-[1.12] tracking-[-0.045em]">
+          <div className="mx-auto max-w-[1360px] px-5 py-10 sm:px-10 sm:py-14 lg:px-12 lg:py-20 xl:px-16">
+            <h2 className="max-w-[700px] text-balance text-[clamp(1.6rem,6vw,2.7rem)] font-bold leading-[1.12] tracking-[-0.045em]">
               Ce que vous allez{" "}
               <span className="bg-[linear-gradient(to_top,#fff52d_28%,transparent_28%)]">
                 gagner.
@@ -98,10 +98,10 @@ async function AccompanimentContent({ params }: Props) {
                     <Check aria-hidden="true" className="size-4" />
                   </span>
                   <div>
-                    <h3 className="text-xl font-semibold tracking-[-0.03em]">
+                    <h3 className="text-balance text-lg font-semibold sm:text-xl tracking-[-0.03em]">
                       {benefit.title}
                     </h3>
-                    <p className="mt-2 text-[15px] leading-[1.6] text-brand-muted">
+                    <p className="mt-2 text-pretty text-[15px] leading-[1.6] text-brand-muted">
                       {benefit.text}
                     </p>
                   </div>
@@ -112,13 +112,13 @@ async function AccompanimentContent({ params }: Props) {
         </section>
 
         <section className="bg-brand-soft">
-          <div className="mx-auto flex max-w-[1360px] flex-col items-start justify-between gap-6 px-6 py-12 sm:px-10 md:flex-row md:items-center lg:px-16">
-            <p className="max-w-[560px] text-2xl font-bold leading-tight tracking-[-0.04em]">
+          <div className="mx-auto flex max-w-[1360px] flex-col items-start justify-between gap-6 px-5 py-10 sm:px-10 sm:py-12 md:flex-row md:items-center lg:px-16">
+            <p className="max-w-[560px] text-balance text-xl font-bold sm:text-2xl leading-tight tracking-[-0.04em]">
               Prêt à avancer vers le bon emploi ?
             </p>
             <Link
               href="/#contact"
-              className="inline-flex min-h-14 items-center gap-7 rounded-full bg-brand-yellow pl-7 pr-6 text-base font-bold text-brand-ink transition-transform hover:-translate-y-0.5"
+              className="inline-flex min-h-14 w-full items-center justify-between gap-7 whitespace-nowrap rounded-full bg-brand-yellow pl-7 pr-6 text-base font-bold sm:w-auto sm:justify-center text-brand-ink transition-transform hover:-translate-y-0.5"
             >
               Réserver ma place
               <ArrowRight aria-hidden="true" className="size-4" />
