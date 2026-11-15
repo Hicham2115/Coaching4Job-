@@ -4,35 +4,35 @@ import { ArrowRight } from "lucide-react";
 
 export default function Method() {
   return (
-  <section id="methode" className="scroll-mt-10 bg-white">
-    <div className="mx-auto max-w-[1360px] px-6 sm:px-10 lg:px-16">
-      <div className="grid gap-0 py-12 sm:py-16 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-6 lg:py-14">
-        <div className="relative z-10 order-2 -mt-10 mx-3 border border-brand-ink/10 bg-white/95 p-6 shadow-[0_14px_36px_rgba(17,17,17,0.08)] backdrop-blur-sm sm:mx-0 sm:p-8 lg:order-1 lg:mt-0 lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none lg:pr-2">
-          <p className="mb-7 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-muted sm:text-sm">
+  <section id="methode" className="scroll-mt-10 overflow-x-clip bg-white">
+    <div className="mx-auto max-w-[1360px] px-5 sm:px-10 lg:px-12 xl:px-16">
+      <div className="grid gap-0 py-10 sm:py-14 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-8 lg:py-14 xl:gap-10">
+        <div className="relative z-10 order-2 -mt-8 mx-2 border border-brand-ink/10 bg-white/95 p-5 shadow-[0_14px_36px_rgba(17,17,17,0.08)] backdrop-blur-sm sm:-mt-12 sm:mx-6 sm:p-8 md:mx-12 lg:order-1 lg:mx-0 lg:mt-0 lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none lg:pr-2">
+          <p className="mb-5 flex items-center gap-3 text-xs sm:mb-7 font-semibold uppercase tracking-[0.16em] text-brand-muted sm:text-sm">
             <span
               aria-hidden="true"
               className="h-[2px] w-12 bg-brand-ink/55"
             />
             Notre méthode
           </p>
-          <h2 className="max-w-[700px] text-[clamp(1.9rem,3.1vw,3.35rem)] font-bold leading-[1.1] tracking-[-0.045em] text-brand-ink">
+          <h2 className="max-w-[700px] text-[clamp(1.75rem,5.5vw,2.6rem)] lg:text-[clamp(2rem,3.1vw,3.35rem)] font-bold leading-[1.1] tracking-[-0.045em] text-brand-ink">
             Un accompagnement{" "}
             <span className="lg:block">
               humain, concret et sur mesure
               <span className="text-brand-yellow">.</span>
             </span>
           </h2>
-          <p className="mt-7 max-w-[620px] text-base leading-7 text-brand-muted sm:text-lg sm:leading-8">
+          <p className="mt-5 max-w-[620px] text-[15px] leading-7 text-brand-muted sm:mt-7 sm:text-base lg:text-lg lg:leading-8">
             Nous combinons écoute, outils pratiques et connaissance du
             marché marocain pour vous aider à clarifier votre objectif,
             préparer vos démarches et avancer plus vite vers le bon emploi.
           </p>
           <Link
             href="#contact"
-            className="mt-8 inline-flex min-h-[62px] w-full items-center justify-center gap-3 whitespace-nowrap rounded-full bg-brand-yellow px-4 text-sm font-semibold text-brand-ink transition-transform hover:-translate-y-0.5 sm:w-auto sm:justify-between sm:gap-8 sm:px-8 sm:text-lg"
+            className="mt-7 inline-flex min-h-14 w-full items-center justify-between gap-4 rounded-full bg-brand-yellow py-3 pl-6 pr-5 text-left text-[15px] font-semibold leading-snug text-brand-ink transition-transform hover:-translate-y-0.5 sm:w-auto sm:gap-8 sm:px-8 sm:text-base lg:mt-8 lg:w-full xl:w-auto xl:text-lg"
           >
             Réserver ma place à la conférence
-            <ArrowRight aria-hidden="true" className="size-4" />
+            <ArrowRight aria-hidden="true" className="size-4 shrink-0" />
           </Link>
         </div>
         <div className="relative order-1 aspect-[1.3] w-full overflow-hidden bg-brand-soft sm:aspect-[1.56] lg:order-2">
