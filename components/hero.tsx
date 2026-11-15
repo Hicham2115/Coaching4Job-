@@ -31,7 +31,7 @@ export default function Hero() {
       </video>
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-ink/90 via-brand-ink/50 to-transparent max-lg:bg-brand-ink/70"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-ink/90 via-brand-ink/50 to-transparent max-lg:bg-none max-lg:bg-brand-ink/50"
       />
 
       <section className="mx-auto w-full max-w-[1510px] px-4 py-16 sm:px-6 lg:px-[3.2%] lg:py-20">
