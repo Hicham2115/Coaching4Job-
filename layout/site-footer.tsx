@@ -8,7 +8,7 @@ export default function SiteFooter() {
       <div aria-hidden="true" className="mb-8 h-1 w-full bg-brand-yellow" />
       <div className="grid gap-8 sm:grid-cols-2 sm:items-start lg:grid-cols-[1.2fr_1fr_1fr]">
         <div>
-          <a className="inline-flex items-center gap-3" href="#accueil">
+          <a className="inline-flex items-center gap-3" href="/#accueil">
             <Image
               src="/images/coaching4job-logo-transparent.png"
               alt="Coaching 4 Job"
@@ -32,19 +32,19 @@ export default function SiteFooter() {
           >
             <a
               className="underline decoration-brand-yellow/0 decoration-2 underline-offset-4 transition-all duration-200 hover:translate-x-1 hover:text-brand-yellow hover:decoration-brand-yellow focus-visible:translate-x-1 focus-visible:text-brand-yellow focus-visible:decoration-brand-yellow focus-visible:outline-none"
-              href="#accompagnements"
+              href="/#accompagnements"
             >
               Accompagnements
             </a>
             <a
               className="underline decoration-brand-yellow/0 decoration-2 underline-offset-4 transition-all duration-200 hover:translate-x-1 hover:text-brand-yellow hover:decoration-brand-yellow focus-visible:translate-x-1 focus-visible:text-brand-yellow focus-visible:decoration-brand-yellow focus-visible:outline-none"
-              href="#methode"
+              href="/#methode"
             >
               Notre méthode
             </a>
             <a
               className="underline decoration-brand-yellow/0 decoration-2 underline-offset-4 transition-all duration-200 hover:translate-x-1 hover:text-brand-yellow hover:decoration-brand-yellow focus-visible:translate-x-1 focus-visible:text-brand-yellow focus-visible:decoration-brand-yellow focus-visible:outline-none"
-              href="#a-propos"
+              href="/#a-propos"
             >
               Notre approche
             </a>

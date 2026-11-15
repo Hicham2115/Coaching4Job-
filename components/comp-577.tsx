@@ -9,10 +9,10 @@ import {
 } from "@/components/ui/navigation-menu";
 
 const navigationLinks = [
-  { href: "#webinaire", label: "Webinaire" },
-  { href: "#accompagnements", label: "Accompagnements" },
-  { href: "#methode", label: "Méthode" },
-  { href: "#a-propos", label: "À propos" },
+  { href: "/#webinaire", label: "Webinaire" },
+  { href: "/#accompagnements", label: "Accompagnements" },
+  { href: "/#methode", label: "Méthode" },
+  { href: "/#a-propos", label: "À propos" },
 ];
 
 export default function Component() {
@@ -20,7 +20,7 @@ export default function Component() {
     <header className="relative z-20 border-b-2 border-brand-ink/45 bg-white">
       <div className="relative mx-auto flex h-16 max-w-[1320px] items-center gap-4 px-5 sm:px-8 xl:h-[92px] xl:px-14">
         <Link
-          href="#accueil"
+          href="/#accueil"
           aria-label="Coaching 4 Job, accueil"
           className="flex min-w-0 items-center gap-3 text-brand-ink xl:gap-4"
         >
@@ -53,7 +53,7 @@ export default function Component() {
         </NavigationMenu>
         <Link
           className="ml-auto inline-flex h-10 shrink-0 whitespace-nowrap items-center justify-center gap-3 rounded-full bg-brand-yellow px-4 text-xs font-bold text-brand-ink transition-transform hover:-translate-y-0.5 xl:h-[50px] xl:min-w-[200px] xl:gap-5 xl:px-6 xl:text-sm"
-          href="#contact"
+          href="/#contact"
         >
           <span className="hidden sm:inline">Conférence en ligne</span>
           <span className="sm:hidden">Conférence</span>
